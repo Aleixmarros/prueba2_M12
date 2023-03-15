@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+// import Play from './Play';
 // import Play from "./Play";
 // import Classification from "./Classification";
 

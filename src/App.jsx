@@ -1,7 +1,18 @@
 import './App.css';
 import React from "react";
-import Players from "./Players";
-import Header from './Header';
+import Home from './components/Home';
+import Play from './components/Play';
+import Classification from './components/Classification';
+import Players from './components/Players';
+import Teams from './components/Teams';
+import Profile from './components/Profile';
+import AboutUs from './components/AboutUs';
+import Login from './components/login.component';
+import SignUp from './components/signup.component';
+import Header from './components/Header';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+
 // import NavBar from './Header';
 
 // import background from "./img/fondo_champions.png";
@@ -9,8 +20,8 @@ import Header from './Header';
 
 
 const App = () => {
-  
-  const titulo = "FutMan";
+
+  // const titulo = "FutMan";
   // const colores = {
   //     primary: "text-primary",
   //     info: "text-info",
@@ -18,44 +29,71 @@ const App = () => {
   // };
 
   // Condicional
-  const user = true;
+  // const user = true;
 
-  const SaludoBienvenida = () => <h2 className="text-warning">Bienvenido!</h2>;
-  
-  const SaludoDespedida = () => (
-      <h2 className="text-secondary">Usuario offline</h2>
-  );
+  // const SaludoBienvenida = () => <h2 className="text-warning">Bienvenido!</h2>;
+
+  // const SaludoDespedida = () => (
+  //   <h2 className="text-secondary">Usuario offline</h2>
+  // );
 
   // Listas y Keys
-//   const frutas = ["🍉", "🍌", "🍓"];
-//   <button className="btn btn-primary" onClick={() => console.log("Play!")}>
-//     Play!
-// </button>
+  //   const frutas = ["🍉", "🍌", "🍓"];
+  //   <button className="btn btn-primary" onClick={() => console.log("Play!")}>
+  //     Play!
+  // </button>
 
-// Titulo
+  // Titulo
 
 
 
-  return  (
-    // <body  style={{ backgroundImage: `url(${background})` }}>
-    <section>
+  return (
+    <div>
       <Header />
-      {/* <NavBar /> */}
-      <div className="container">
-           {/* <h1 className={colores.primary}>{titulo}</h1>  */}
-          <h2 className="hovertown titulo">{titulo}</h2>
-          {user ? <SaludoBienvenida /> : <SaludoDespedida />}
-          {/* <ul>
-          {frutas.map((fruta, i) => (
-              <li key={fruta}>
-                  {i + 1} - {fruta}
-              </li>
-          ))}
-      </ul> */}
-      <Players />;
-      </div>
-      {/* </section></body> */}
-      </section>
+    <Router>
+        <div class='h'>
+        <Link className="nav-link " to={'/Home'}>
+          {/* Home */}
+        </Link>
+          <Link className="nav-link" to={'/Play'}>
+            {/* Play */}
+          </Link>
+            <Link className="nav-link" to={'/Classification'}>
+              {/* Classification */}
+            </Link>
+              <Link className="nav-link" to={'/Players'}>
+                {/* Players */}
+              </Link>
+                <Link className="nav-link" to={'/Teams'}>
+                  {/* Teams */}
+                </Link>
+                  <Link className="nav-link" to={'/Login'}>
+                    {/* Login */}
+                  </Link>
+                    <Link className="nav-link" to={'/sign-up'}>
+                      {/* Sign up */}
+                    </Link>
+                      <Link className="nav-link" to={'/AboutUs'}>
+                        {/* About Us */}
+                      </Link>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Play" element={<Play />} />
+          <Route path="/Classification" element={<Classification />} />
+          <Route path="/Players" element={<Players />} />
+          <Route path="/Teams" element={<Teams />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/AboutUS" element={<AboutUs />} />
+          
+        </Routes>
+        </div>
+
+    </Router>
+    </div>
+
   );
 };
 
