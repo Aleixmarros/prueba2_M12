@@ -4,8 +4,14 @@ section {
     justify-content: center;
     align-items: center;
 }
+
 form {
     text-align: center;
+
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     width: 50%;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -15,6 +21,16 @@ form {
     /* margin-left: 500px;
     margin-right: 500px; */
 }
+input[type=Text],
+input[type=Email],
+input[type=password] {
+    width: 100%;
+    text-align: center;
+}
+.d-grid{
+    width: 100%;
+}
+
 
 .navigation {
     height: 60px;
@@ -69,7 +85,11 @@ form {
     background-color: #2642af;
   }
 
-
+  @media screen and (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  }
   @media screen and (max-width: 768px) {
     .navigation-menu ul {
       position: absolute;
@@ -97,7 +117,7 @@ form {
   @media screen and (max-width: 768px) {
     .navigation-menu ul {
       /* previous styles */
-      dipslay: none;
+      display: none;
     }
   }
   @media screen and (max-width: 768px) {

@@ -3,7 +3,8 @@ import './login.css'
 export default class Login extends Component {
   render() {
     return (
-      <form className='centeer'>
+      <form>
+              <div class="container text-center justify-content-center ">
         <h3>Login</h3><br></br>
         <div className="mb-3">
           <label>Email address</label>
@@ -41,6 +42,8 @@ export default class Login extends Component {
         <p className="forgot-password text-right">
           {/* Forgot <a href="#">password?</a> */}
         </p>
+        </div>
+
       </form>
     )
   }

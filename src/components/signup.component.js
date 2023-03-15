@@ -3,12 +3,14 @@ export default class SignUp extends Component {
   render() {
     return (
       <form>
+                      <div class="container text-center justify-content-center ">
+
         <h3>Sign Up</h3><br></br>
         <div className="mb-3">
           <label>First name</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control cen"
             placeholder="First name"
           />
         </div>
@@ -40,6 +42,7 @@ export default class SignUp extends Component {
         <p className="forgot-password text-right">
           Already registered <a href="/sign-in">sign in?</a>
         </p>
+        </div>
       </form>
     )
   }
