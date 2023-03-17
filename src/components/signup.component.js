@@ -3,7 +3,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <form>
-                      <div class="container text-center justify-content-center ">
+                      <div className="container text-center justify-content-center ">
 
         <h3>Sign Up</h3><br></br>
         <div className="mb-3">

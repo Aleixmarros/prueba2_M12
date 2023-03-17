@@ -4,7 +4,7 @@ export default class Login extends Component {
   render() {
     return (
       <form>
-              <div class="container text-center justify-content-center ">
+              <div className="container text-center justify-content-center ">
         <h3>Login</h3><br></br>
         <div className="mb-3">
           <label>Email address</label>

@@ -51,7 +51,7 @@ const App = () => {
     <div>
       <Header />
     <Router>
-        <div class='h'>
+        <div className='h'>
         <Link className="nav-link " to={'/Home'}>
           {/* Home */}
         </Link>

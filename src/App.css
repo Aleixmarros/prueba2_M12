@@ -4,9 +4,11 @@
 *{
   color: white;
 }
+.inForm{
+  color: black !important;
+}
 body {
   background-image: url(../src/img/fondo_champions.png);
-	background-repeat: no-repeat;
 	background-size: cover;
   color: white;
 }
