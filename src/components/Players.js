@@ -7,6 +7,7 @@ function Teams() {
   const [player, setPlayer] = useState({});
   const [img, setImg] = useState({});
   const [playerId, setPlayerId] = useState(17227);
+  // 17227
   useEffect(() => {
     // setPlayerId(17225);
 
@@ -47,7 +48,14 @@ function Teams() {
       // setImg(imageUrl);
 
       const data = await response.json();
-      // // console.log(data)
+
+      console.log(data.player.league);
+
+      if(data.player.league === 13){
+        console.log("test entro 2")
+      }
+
+      
       setPlayer(data.player);
       // console.log(player.name);
 
@@ -70,10 +78,11 @@ function Teams() {
   return (
     <div>
       <h2>{player.name} </h2>
+      <h4>Valoración: {player.rating}</h4>
       <p>Posición: {player.position}</p>
       <p>Categoria: {player.color}</p>
-      <p>Valoración: {player.rating}</p>
       <p>Pie preferido: {player.foot}</p>
+      <p>Edad: {player.age}</p>
       <form onSubmit={handleIdSubmit}>
       <input type="text" className='inForm'  style={{color: "black"}}  name='playerId' onChange={handleChange}/>
       {/* <input type="submit" className='inForm'/> */}
