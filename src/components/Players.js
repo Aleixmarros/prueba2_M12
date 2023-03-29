@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import a from '../img/17227.png';
+import jugadoresLS_53 from '../JugadoresLS_53.json'
 import axios from 'axios';
 import '../App.css';
 
