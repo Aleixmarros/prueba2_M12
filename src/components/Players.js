@@ -1,81 +1,51 @@
-import React, { useState, useEffect } from 'react';
-// import a from '../img/17227.png';
-import jugadoresLS_53 from '../JugadoresLS_53.json'
-import axios from 'axios';
+import React, { useState, useEffect} from 'react';
+import jugadoresLS_53 from '../JugadoresLS_53.json';
 import '../App.css';
 
-function Teams() {
+function Players() {
   const [player, setPlayer] = useState({});
-  const [img, setImg] = useState({});
-  const [playerId, setPlayerId] = useState(17227);
-  // 17227
-  useEffect(() => {
-    // setPlayerId(17225);
+  const [playerId, setPlayerId] = useState(2706);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    axios.get(`https://futdb.app/api/players/${playerId}/image`, {
-      responseType: 'arraybuffer',
-      headers: {
-        'X-AUTH-TOKEN': 'd856397f-6543-4eb9-8170-9969d6a559cb'
-      },
-    })
-      .then((response) => {
-        const imageBlob = new Blob([response.data], { type: 'image/png' });
-        const imageUrl = URL.createObjectURL(imageBlob);
-        // console.log(imageBlob);
-        // console.log(response);
-        setImg(imageUrl);
-      })
-
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://futdb.app/api/players/${playerId}`,
-        {
-          responseType: 'arraybufer',
-          method: 'GET',
-          headers: {
-            'X-AUTH-TOKEN': 'd856397f-6543-4eb9-8170-9969d6a559cb'
-          }
-
-        },
-      );
-
-
-
-      // const imageBlob = new Blob([response], { type: 'image/png' });
-      // const imageUrl = URL.createObjectURL(imageBlob);
-      // console.log(imageBlob);
-      // console.log(imageUrl);
-      // console.log(response);
-      // setImg(imageUrl);
-
-      const data = await response.json();
-
-      console.log(data.player.league);
-
-      if(data.player.league === 13){
-        console.log("test entro 2")
-      }
-
-      
-      setPlayer(data.player);
-      // console.log(player.name);
-
-
-
-
-    };
-    fetchData();
-  }, [playerId]);
 
   const handleIdSubmit = (e) => {
-    console.log(e.target.value)
     e.preventDefault();
     setPlayerId(e.target.value);
+  };
 
-  }
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     setPlayerId(e.target.value);
-  }
+  };
+
+  const getPlayerById = (idOrName) => {
+    const foundPlayer = jugadoresLS_53.find(player => {
+      // Si el idOrName es un número, busca por id
+      if (!isNaN(idOrName)) {
+        return player.id === parseInt(idOrName);
+      }
+      // Si el idOrName es una string, busca por nombre
+      else {
+        return player.name.toLowerCase().includes(idOrName.toLowerCase());
+      }
+    });
+    if (foundPlayer) {
+      setPlayer(foundPlayer);
+      setErrorMessage('');
+    } else {
+        setErrorMessage('ID inválido');
+        }
+  };
+
+  useEffect(() => {
+    getPlayerById(playerId);
+
+  }, [playerId]);
+  const [imageSrc, setImageSrc] = useState('');
+  
+  useEffect(() => {
+    // Importa la imagen usando la ruta relativa
+    import(`./imgJugadores/${player.id}.png`).then(image => setImageSrc(image.default));
+  }, [player.id]);
   return (
     <div>
       <h2>{player.name} </h2>
@@ -85,14 +55,12 @@ function Teams() {
       <p>Pie preferido: {player.foot}</p>
       <p>Edad: {player.age}</p>
       <form onSubmit={handleIdSubmit}>
-      <input type="text" className='inForm'  style={{color: "black"}}  name='playerId' onChange={handleChange}/>
-      {/* <input type="submit" className='inForm'/> */}
-
+        <input type="text" className="inForm" style={{ color: 'black' }} name="playerId" onChange={handleChange} />
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </form>
-      <img src={img} alt="a" height={500} width={"auto"} />
+      <img src={imageSrc} style={{height: 500}} alt="Imagen del jugador" />
     </div>
   );
 }
 
-export default Teams;
-
+export default Players;
