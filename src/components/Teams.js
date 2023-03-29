@@ -4,12 +4,13 @@ import '../App.css';
 
 function Teams() {
   const [player, setPlayer] = useState({});
-  const [playerId, setPlayerId] = useState();
+  const id = 39;
+  // const [playerId, setPlayerId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://futdb.app/api/players?page=20`,
+        `https://futdb.app/api/players?page=${id}`,
         {
           method: 'GET',
           headers: {
@@ -27,7 +28,7 @@ function Teams() {
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = 'jugadores.json';
+      link.download = 'jugadores'+(id)+'.json';
       document.body.appendChild(link);
       link.click();
     };
