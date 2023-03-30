@@ -101,6 +101,9 @@ export default function Header() {
                         <a href="/Teams">Teams</a>
                     </li>
                     <li>
+                        <a href="/MyTeam">My Team</a>
+                    </li>
+                    <li>
                         <a href="/Profile">Profile</a>
                     </li>
                     <li>

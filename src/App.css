@@ -30,6 +30,19 @@ body {
   /* text-transform: uppercase; */
   letter-spacing: -1px;
 }
+
+
+
+/* MyTeam */
+.containerMyTeam {
+  width: 90%;
+  height: 90%;
+  background-image: url(../src/img/campoMyTeam.png);
+  background-size: cover;
+}
+
+
+
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 
 /* .xd {

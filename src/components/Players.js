@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import jugadoresLS_53 from '../JugadoresLS_53.json';
 import '../App.css';
+import laliga from '../img/laliga-logo.png';
 
 function Players() {
   const [player, setPlayer] = useState({});
@@ -51,6 +52,9 @@ function Players() {
       <h2>{player.name} </h2>
       <h4>Valoración: {player.rating}</h4>
       <p>Posición: {player.position}</p>
+      <p>Liga: {player.league} <img src={laliga} style={{height: 40}} alt="Imagen de la liga"/></p>
+      <p>Club: {player.club}</p>
+      <p>Price: {player.price}</p>
       <p>Categoria: {player.color}</p>
       <p>Pie preferido: {player.foot}</p>
       <p>Edad: {player.age}</p>

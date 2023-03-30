@@ -10,6 +10,7 @@ import AboutUs from './components/AboutUs';
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
 import Header from './components/Header';
+import MyTeam from './components/MyTeam';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
@@ -64,24 +65,28 @@ const App = () => {
               <Link className="nav-link" to={'/Players'}>
                 {/* Players */}
               </Link>
-                <Link className="nav-link" to={'/Teams'}>
-                  {/* Teams */}
+                <Link className="nav-link" to={'/MyTeam'}>
+                  {/* MyTeam */}
                 </Link>
-                  <Link className="nav-link" to={'/Login'}>
-                    {/* Login */}
+                  <Link className="nav-link" to={'/Teams'}>
+                    {/* Teams */}
                   </Link>
-                    <Link className="nav-link" to={'/sign-up'}>
-                      {/* Sign up */}
+                    <Link className="nav-link" to={'/Login'}>
+                      {/* Login */}
                     </Link>
-                      <Link className="nav-link" to={'/AboutUs'}>
-                        {/* About Us */}
+                      <Link className="nav-link" to={'/sign-up'}>
+                        {/* Sign up */}
                       </Link>
+                        <Link className="nav-link" to={'/AboutUs'}>
+                          {/* About Us */}
+                        </Link>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Play" element={<Play />} />
           <Route path="/Classification" element={<Classification />} />
           <Route path="/Players" element={<Players />} />
+          <Route path="/MyTeam" element={<MyTeam />} />
           <Route path="/Teams" element={<Teams />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Login" element={<Login />} />
