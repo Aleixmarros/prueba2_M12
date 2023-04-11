@@ -6,7 +6,7 @@ const MyTeam = () => {
 
 
     return (
-        <article>
+        <article >
             <h2 className='h'>My Team</h2>
 
            
