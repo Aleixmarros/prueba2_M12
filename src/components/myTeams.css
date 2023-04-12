@@ -10,6 +10,17 @@ article {
   align-items: center;
 }
 
+.titulo2 {
+  color: rgb(255, 255, 255);
+  display: block;
+  font: bold 42px Helvetica;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  /* text-transform: uppercase; */
+  letter-spacing: -1px;
+}
+
 .containerMyTeam {
   width: 100%;
   height: 100%;
@@ -23,9 +34,9 @@ article {
 }
 
 .posicion {
-  height: 150px;
-  width: 150px;
-  margin: 10px;
+  height: 100px;
+  width: 100px;
+  margin: 0px;
   border: 2px solid white;
   display: flex;
   flex-direction: column;
@@ -33,15 +44,10 @@ article {
   align-items: center;
 }
 
-.hueco {
-  height: 100px;
-  width: 100px;
-  border: 2px dashed white;
-}
 
 .futbolista-en-posicion {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   border: 2px solid white;
   display: flex;
   justify-content: center;
@@ -49,21 +55,23 @@ article {
 }
 
 .futbolista {
-  height: 150px;
-  width: 150px;
-  margin: 10px;
-  border: 2px solid white;
+  height: 110px;
+  width: 110px;
+  margin: 0px;
+  /* border: 2px solid white; */
   cursor: move;
 }
 
 .imgJ {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
 }
+
 .plantilla-item {
   position: relative;
   z-index: 1;
 }
+
 .plantilla-item {
   /* Propiedades anteriores... */
   transition: transform 0.2s ease-in-out;
@@ -76,6 +84,7 @@ article {
 .plantilla-list {
   list-style: none;
   margin: 0;
+  width: 10;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -83,8 +92,9 @@ article {
 }
 
 .plantilla-item {
-  width: calc(25% - 1.5rem);
+  width: calc(30% - 1rem);
   margin: 0.5rem;
+  width: 10;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
@@ -94,24 +104,22 @@ article {
 }
 
 .plantilla-item::before {
-  content: attr(data-posicion);
   font-weight: bold;
   position: absolute;
-  top: -1.25rem;
   left: 0;
-  width: 100%;
   text-align: center;
   color: rgba(255, 255, 255, 0.1);
 }
 
+
 .hueco {
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px dashed rgba(255, 255, 255, 0.1);
-  margin: 0.5rem;
+  height: 40px;
+  margin: 60px;
+  width: 10px;
+  /* border: 2px dashed white; */
+  flex-shrink: 0; /* Evita que el elemento se reduzca */
 }
+
 
 .futbolista {
   display: flex;
@@ -135,53 +143,33 @@ article {
   text-align: center;
 }
 
-.plantilla-item-1 {
-  grid-row-start: 1;
-  grid-column-start: 1;
+.hueco.vacio{
+  display: none;
+  opacity: 0.1;
+  width: 1%;
 }
 
-.plantilla-item-2 {
-  grid-row-start: 2;
-  grid-column-start: 2;
+.plantilla-item.DFC{
+  width: 20%;
 }
-
-.plantilla-item-3 {
-  grid-row-start: 3;
-  grid-column-start: 2;
+.plantilla-item.LI{
+  width: 20%;
 }
-
-.plantilla-item-4 {
-  grid-row-start: 4;
-  grid-column-start: 2;
+.plantilla-item.LD{
+  width: 20%;
 }
-
-.plantilla-item-5 {
-  grid-row-start: 2;
-  grid-column-start: 3;
+.plantilla-item.MC{
+  width: 26%;
 }
-
-.plantilla-item-6 {
-  grid-row-start: 3;
-  grid-column-start: 3;
+.plantilla-item.EI{
+  width: 27%;
 }
-
-.plantilla-item-7 {
-  grid-row-start: 1;
-  grid-column-start: 1;
+.plantilla-item.ED{
+  width: 27%;
 }
-
-.plantilla-item-8 {
-  grid-row-start: 2;
-  grid-column-start: 1;
+.plantilla-item.DC{
+  width: 35%;
 }
-
-.plantilla-item-9 {
-  grid-row-start: 3;
-  grid-column-start: 1;
+.plantilla-item.Portero{
+  width: 20%;
 }
-
-.plantilla-item-10 {
-  grid-row-start: 4;
-  grid-column-start: 1;
-}
-
