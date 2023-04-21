@@ -11,6 +11,7 @@ import Login from './components/login.component';
 import SignUp from './components/signup.component';
 import Header from './components/Header';
 import MyTeam from './components/MyTeam';
+import selT from './components/seleccionar-torneo';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
@@ -92,6 +93,7 @@ const App = () => {
           <Route path="/Login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/AboutUS" element={<AboutUs />} />
+          <Route path="/seleccionar-torneo" element={<selT />} />
           
         </Routes>
         </div>

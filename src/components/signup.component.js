@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 export default class SignUp extends Component {
   render() {
     return (
-      <form>
+      <form className='form'>
                       <div className="container text-center justify-content-center ">
 
         <h3>Sign Up</h3><br></br>

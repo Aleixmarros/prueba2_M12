@@ -1,11 +1,12 @@
 .App {
   text-align: center;
 }
-*{
+div{
   color: white;
 }
 .inForm{
   color: black !important;
+
 }
 body {
   background-image: url(../src/img/fondo_champions.png);
@@ -32,6 +33,118 @@ body {
   letter-spacing: -1px;
 }
 
+
+
+/* Players */
+
+/* Form */
+.jform {
+  text-align: center;
+
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+
+  /* margin-left: 500px;
+  margin-right: 500px; */
+}
+
+.Jimg{
+  /* background-image: url(./components/imgJugadores/1.png); */
+  /* background-color: #282c34; */
+  /* width: 100%;
+  height: 1000px; */
+  /* display: 'flex' */
+  /* background: no-repeat; */
+}
+/* Estilos para el contenedor principal */
+.players-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+.precio {
+  font-size: 2em;
+  color: green;
+  animation: cambiaColor 1s ease-in-out infinite;
+}
+
+@keyframes cambiaColor {
+  0% {
+    color: green;
+  }
+  50% {
+    color: white;
+  }
+  100% {
+    color: green;
+  }
+}
+.jbutton {
+  background-color: #0077b6;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.jbutton:hover {
+  background-color: #023e8a;
+}
+
+
+/* Estilos para el formulario */
+
+.input {
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+}
+
+
+/* Estilos para el mensaje de error */
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Estilos para la lista de jugadores */
+.listaJugadores {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  max-width: 400px;
+  text-align-last: center;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.listaJugadores option {
+  font-size: 1.2rem;
+  background-color: #f2f2f2;
+  color: #333;
+}
 
 
 
