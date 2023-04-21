@@ -11,6 +11,7 @@ div{
 body {
   background-image: url(../src/img/fondo_champions.png);
 	background-size: cover;
+  background-attachment: fixed;
   color: white;
 }
 .h{
@@ -72,7 +73,7 @@ body {
   /* display: 'flex' */
   /* background: no-repeat; */
   margin-top: -35px;
-  z-index: -100;
+  z-index: -1000;
 }
 /* Estilos para el contenedor principal */
 .players-container {

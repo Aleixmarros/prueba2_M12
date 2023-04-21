@@ -1,0 +1,45 @@
+[
+{"type":"header","version":"5.2.0","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"futman"},
+{"type":"table","name":"participacionesusuario","database":"futman","data":
+[
+{"UserID":"1","IdTorneo":"3"}
+]
+}
+,{"type":"table","name":"players","database":"futman","data":
+[
+{"PlayerID":"1","TeamID":"1","Goals":"10","IdTorneo":"1","Titularidades":"8"}
+]
+}
+,{"type":"table","name":"teams","database":"futman","data":
+[
+{"TeamID":"1","Name":"Team A","IdTorneo":"1","Money":"1000"},
+{"TeamID":"2","Name":"Team B","IdTorneo":"1","Money":"2000"},
+{"TeamID":"3","Name":"Team C","IdTorneo":"2","Money":"1500"},
+{"TeamID":"4","Name":"Team D","IdTorneo":"2","Money":"3000"}
+]
+}
+,{"type":"table","name":"teamstats","database":"futman","data":
+[
+{"Games":"10","Victories":"7","Losses":"3","GoalsInFavour":"25","GoalsAgainst":"10","TeamID":"1","IdTorneo":"1"}
+]
+}
+,{"type":"table","name":"torneo","database":"futman","data":
+[
+{"IdTorneo":"1","Name":"Torneo A"},
+{"IdTorneo":"2","Name":"Torneo B"},
+{"IdTorneo":"3","Name":"Torneo C"}
+]
+}
+,{"type":"table","name":"users","database":"futman","data":
+[
+{"UserID":"0","Name":"a","Surname":"a","Nickname":null,"Email":"a@gmail.com","Password":"$2a$10$uw1jRBa6ywgMDxv5Lzu6bu\/pPoJObC.jSFSnuBh4OLnXk6XEbCbEm","Avatar":null},
+{"UserID":"1","Name":"joan","Surname":"diaz","Nickname":"joandiaper","Email":"joandiaper@campus.monlau.com","Password":"$2a$10$F60COlAiR\/xo5XA3xOOHg.X7EiREwYMpfhbNXY6i81wiZcIOWF2Dy","Avatar":null}
+]
+}
+,{"type":"table","name":"usersteams","database":"futman","data":
+[
+{"UserID":"1","TeamID":"2","IdTorneo":"1"}
+]
+}
+]

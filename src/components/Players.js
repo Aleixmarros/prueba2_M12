@@ -7,6 +7,7 @@ import CardJ from './ImgJ';
 
 function Players() {
   const [player, setPlayer] = useState({});
+  const [players, setPlayers] = useState([]);
   const [playerId, setPlayerId] = useState(2706);
   const [errorMessage, setErrorMessage] = useState('');
   const [jugadoresOrdenados, setJugadoresOrdenados] = useState([]);
@@ -36,8 +37,6 @@ function Players() {
     e.preventDefault();
     getPlayerById(playerId);
   };
-
-
   const handleSelectChange = (e) => {
     setPlayerId(e.target.value);
   };
@@ -69,6 +68,44 @@ function Players() {
   //   }
   // };
 
+  useEffect(() => {
+    // Función para obtener los datos de la API
+    const obtenerDatos = async () => {
+      try {
+        const response = await fetch('E:/M12/React/prueba2/prueba2/futmanDB.json'); // URL de la API
+        const data = await response.json(); // Obtener los datos en formato JSON
+        
+        // Transformación de los datos obtenidos
+        const jugadoresApi = data.map(player => {
+          return {
+            PlayerID: playerId,
+            nombre: player.name, // Cambiar 'name' a 'nombre'
+            TeamID: player.Teamid,
+            Goals: player.goals,
+            IdTorneo: player.IdTorneo,
+            Titularidades: player.Titularidades,
+            ...player // Mantener las demás propiedades del objeto sin cambios
+          }
+        });
+        
+        setPlayers(jugadoresApi); // Actualizar el estado con los datos transformados
+      } catch (error) {
+        console.error('Error al obtener datos de la API:', error);
+      }
+    }
+    obtenerDatos(); // Llamada a la función obtenerDatos al cargar el componente
+  }, []);
+
+  const enviarPlayers = (player) => {
+    setPlayers([...players, player]); // Agregar una nueva persona al final de la lista de personas utilizando el operador spread
+  }
+
+  // const MyTeam = (players) => {
+  //   this.setState({
+  //     players: [...this.state.players, Players]
+  //   });
+  //   // file:///E:/M12/React/prueba2/prueba2/futmanDB.json
+  // }
   useEffect(() => {
     getPlayerById(playerId);
   }, [playerId]);
@@ -118,7 +155,7 @@ function Players() {
             </option>
           ))}
         </select>
-        <button className='jbutton' type="submit">Comprar Jugador</button>
+        <button className='jbutton' type="button" onClick={enviarPlayers}>Comprar Jugador</button>
       </form>
       <div className='Jimg' style={{ position: 'relative', textAlign: 'center'}}>
         <CardJ />
