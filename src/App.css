@@ -18,7 +18,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
 }
 .logo{
   display: inline-flex;
@@ -54,6 +53,17 @@ body {
   margin-right: 500px; */
 }
 
+.datosCard{
+  font-family: fantasy;
+
+  /* "Montserrat"
+"Oswald"
+"Titillium Web"
+"Lato"
+"Roboto"
+"Open Sans"
+"Raleway" */
+}
 .Jimg{
   /* background-image: url(./components/imgJugadores/1.png); */
   /* background-color: #282c34; */
@@ -61,6 +71,8 @@ body {
   height: 1000px; */
   /* display: 'flex' */
   /* background: no-repeat; */
+  margin-top: -35px;
+  z-index: -100;
 }
 /* Estilos para el contenedor principal */
 .players-container {

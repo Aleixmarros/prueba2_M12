@@ -10,48 +10,16 @@ import AboutUs from './components/AboutUs';
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
 import Header from './components/Header';
+import Header2 from './components/Header2';
 import MyTeam from './components/MyTeam';
 import selT from './components/seleccionar-torneo';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
-// import NavBar from './Header';
-
-// import background from "./img/fondo_champions.png";
-
-
-
 const App = () => {
-
-  // const titulo = "FutMan";
-  // const colores = {
-  //     primary: "text-primary",
-  //     info: "text-info",
-  //     danger: "text-danger",
-  // };
-
-  // Condicional
-  // const user = true;
-
-  // const SaludoBienvenida = () => <h2 className="text-warning">Bienvenido!</h2>;
-
-  // const SaludoDespedida = () => (
-  //   <h2 className="text-secondary">Usuario offline</h2>
-  // );
-
-  // Listas y Keys
-  //   const frutas = ["🍉", "🍌", "🍓"];
-  //   <button className="btn btn-primary" onClick={() => console.log("Play!")}>
-  //     Play!
-  // </button>
-
-  // Titulo
-
-
-
   return (
     <div>
-      <Header />
+      <Header2 />
     <Router>
         <div className='h'>
         <Link className="nav-link " to={'/Home'}>

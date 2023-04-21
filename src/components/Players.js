@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import jugadoresLS_53 from '../JugadoresLS_53.json';
 import '../App.css';
 import laliga from '../img/laliga-logo.png';
-import fcard from './imgJugadores/1.png';
+// import fcard from './imgJugadores/1.png';
 import CardJ from './ImgJ';
 
 function Players() {
@@ -28,8 +28,8 @@ function Players() {
 
   useEffect(() => {
     const jugadores = [...jugadoresLS_53];
-    jugadores.sort((a, b) => b.rating - a.rating);
     setJugadoresOrdenados(jugadores);
+    jugadores.sort((a, b) => b.rating - a.rating);
   }, []);
 
   const handleIdSubmit = (e) => {
@@ -74,11 +74,19 @@ function Players() {
   }, [playerId]);
 
   useEffect(() => {
+    const jugadores = [...jugadoresLS_53];
+    jugadores.sort((a, b) => b.rating - a.rating);
+    setJugadoresOrdenados(jugadores);
+  }, []);
+  
+  useEffect(() => {
     const jugadoresFiltrados = jugadoresLS_53.filter((jugador) =>
       jugador.name.toLowerCase().includes(searchValue.toLowerCase())
     );
-    setJugadoresOrdenados(jugadoresFiltrados);
+    const jugadoresOrdenados = [...jugadoresFiltrados].sort((a, b) => b.rating - a.rating);
+    setJugadoresOrdenados(jugadoresOrdenados);
   }, [searchValue]);
+  
   const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
@@ -114,11 +122,13 @@ function Players() {
       </form>
       <div className='Jimg' style={{ position: 'relative', textAlign: 'center'}}>
         <CardJ />
-        <h4 style={{ position: 'absolute', marginLeft: 120,   marginTop: 425, top: 0 , left: 0, color: 'black' }}> {player.name} ({player.rating})</h4>
-        <p style={{ position: 'absolute', marginLeft: 120,   marginTop: 455, top: 0 , left: 0, fontSize: 100, color: 'red' }}>{player.attack}</p>
-        <p style={{ position: 'absolute', marginLeft: 280,   marginTop: 455, top: 0 , left: 0,  fontSize: 100, color: 'green' }}>{player.defense}</p>
-        {/* <img src={fcard} alt="card" style={{ height: 750}} /> */}
-        <img src={imageSrc} style={{ position: 'absolute', marginLeft: 75,  marginTop: 75, top: 0 , left: 0,  height: 350 }} alt="Imagen del jugador" />
+        <div className='datosCard'>
+        <p style={{ position: 'absolute', marginLeft: 85,   marginTop: 110, top: 0 , left: 0,  fontSize: 70, color: 'black' }}>{player.position}</p>
+        <h4 style={{ position: 'absolute', marginLeft: 125,   marginTop: 390, top: 0 , left: 0, color: 'black' }}> {player.name} ({player.rating})</h4>
+        <p style={{ position: 'absolute', marginLeft: 120,   marginTop: 410, top: 0 , left: 0, fontSize: 100, color: 'red' }}>{player.attack}</p>
+        <p style={{ position: 'absolute', marginLeft: 280,   marginTop: 410, top: 0 , left: 0,  fontSize: 100, color: 'green' }}>{player.defense}</p>
+        </div>
+        <img src={imageSrc} style={{ position: 'absolute', marginLeft: 80,  marginTop: 40, top: 0 , left: 0,  height: 350 }} alt="Imagen del jugador" />
       </div>
 
 

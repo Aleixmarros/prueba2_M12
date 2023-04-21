@@ -7,7 +7,7 @@ import '../App.css';
 function Teams() {
   const [player, setPlayer] = useState({});
   const [img, setImg] = useState({});
-  const [playerId, setPlayerId] = useState(17227);
+  const [playerId, setPlayerId] = useState(17700);
   // 17227
   useEffect(() => {
     // setPlayerId(17225);
