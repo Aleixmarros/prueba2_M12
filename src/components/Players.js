@@ -114,7 +114,9 @@ function Players() {
       </form>
       <div className='Jimg' style={{ position: 'relative', textAlign: 'center'}}>
         <CardJ />
-        <h4 style={{ position: 'absolute', marginLeft: 120,   marginTop: 425, top: 0 , left: 0,  height: 350, color: 'black' }}> {player.name} ({player.rating})</h4>
+        <h4 style={{ position: 'absolute', marginLeft: 120,   marginTop: 425, top: 0 , left: 0, color: 'black' }}> {player.name} ({player.rating})</h4>
+        <p style={{ position: 'absolute', marginLeft: 120,   marginTop: 455, top: 0 , left: 0, fontSize: 100, color: 'red' }}>{player.attack}</p>
+        <p style={{ position: 'absolute', marginLeft: 280,   marginTop: 455, top: 0 , left: 0,  fontSize: 100, color: 'green' }}>{player.defense}</p>
         {/* <img src={fcard} alt="card" style={{ height: 750}} /> */}
         <img src={imageSrc} style={{ position: 'absolute', marginLeft: 75,  marginTop: 75, top: 0 , left: 0,  height: 350 }} alt="Imagen del jugador" />
       </div>
