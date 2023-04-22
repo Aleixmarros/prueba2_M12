@@ -32,6 +32,110 @@ body {
   /* text-transform: uppercase; */
   letter-spacing: -1px;
 }
+/* Header */
+.navigation{animation:scale-up-right 0.4s; } @keyframes scale-up-right{0%{transform:scale(.5);transform-origin:right center}100%{transform:scale(1);transform-origin:right center}}
+.hidden {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .titulo2 {
+  display: none;
+  
+  }
+  }
+
+/* Home */
+.sectionHome {
+  perspective: 1000px;
+  margin-top: -7vh;
+}
+.slick-slider {
+  height: 75vh;
+  position: relative;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 15px;
+  padding: 20px;
+  width: 100vh;
+  font-family:'liga-sans' ;
+  /* overflow: hidden; */
+  /* perspective: 100vh; */
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  
+}
+.slick-slider .slick-slide > div {
+  height: 100%;
+  overflow: hidden;
+}
+
+.slick-slider .slick-slide img {
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.slick-active {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-slide:not(.slick-active) {
+  transform: translate3d(0, 0, -150px);
+  opacity: 0.5;
+}
+.slick-slider h1{
+  background: -webkit-linear-gradient(yellow,red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;   
+}
+
+.slick-slider .slick-dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+}
+
+.slick-slider .slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-slider .slick-dots li button {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  text-indent: -9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: -1vh;
+}
+
+.slick-slider .slick-dots li.slick-active button {
+  width: 12px;
+  height: 12px;
+  background-color: #ff8c00;
+}
+
+/* aumentar tamaño de las flechas del slider */
+.slick-prev:before,
+.slick-next:before {
+  transform: scale(1.5);
+}
+
 
 
 
@@ -52,6 +156,14 @@ body {
 
   /* margin-left: 500px;
   margin-right: 500px; */
+}
+
+.datosjug{
+  background-color:  rgba(255, 230, 0, 0.4);
+  border-radius: 15px;
+  padding: 1vh;
+  color: black;
+
 }
 
 .datosCard{
@@ -116,6 +228,12 @@ body {
   background-color: #023e8a;
 }
 
+/* Classificacion */
+.classificacion{
+  background-color: #fff;
+  border-radius: 15px;
+  color: white;
+}
 
 /* Estilos para el formulario */
 

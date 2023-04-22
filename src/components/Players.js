@@ -74,7 +74,7 @@ function Players() {
       try {
         const response = await fetch('E:/M12/React/prueba2/prueba2/futmanDB.json'); // URL de la API
         const data = await response.json(); // Obtener los datos en formato JSON
-        
+
         // Transformación de los datos obtenidos
         const jugadoresApi = data.map(player => {
           return {
@@ -87,7 +87,7 @@ function Players() {
             ...player // Mantener las demás propiedades del objeto sin cambios
           }
         });
-        
+
         setPlayers(jugadoresApi); // Actualizar el estado con los datos transformados
       } catch (error) {
         console.error('Error al obtener datos de la API:', error);
@@ -115,7 +115,7 @@ function Players() {
     jugadores.sort((a, b) => b.rating - a.rating);
     setJugadoresOrdenados(jugadores);
   }, []);
-  
+
   useEffect(() => {
     const jugadoresFiltrados = jugadoresLS_53.filter((jugador) =>
       jugador.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -123,7 +123,7 @@ function Players() {
     const jugadoresOrdenados = [...jugadoresFiltrados].sort((a, b) => b.rating - a.rating);
     setJugadoresOrdenados(jugadoresOrdenados);
   }, [searchValue]);
-  
+
   const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
@@ -133,17 +133,9 @@ function Players() {
 
   return (
     <div className='players-container'>
-      <h2>{player.name} </h2>
-      <h4>Valoración: {player.rating}</h4>
-      <p>Posición: {player.position}</p>
-      <p>
-        Liga: {player.league} <img src={laliga} style={{ height: 40 }} alt="Imagen de la liga" />
-      </p>
-      <p>Club: {player.club}</p>
-      <p>Categoria: {player.color}</p>
-      <p>Pie preferido: {player.foot}</p>
-      <p>Edad: {player.age}</p>
-      <h4 className='precio'>Precio: {typeof player.price === 'number' ? player.price.toLocaleString() : player.price}€</h4>
+      {/* <h2>{player.name} </h2>
+      <h4>Valoración: {player.rating}</h4> */}
+      <h2>Players</h2>
       <form className='jform' onSubmit={handleIdSubmit}>
         <h4>Busca tu jugador ideal</h4>
         <input type="text" className="inForm input" style={{ color: 'black' }} name="playerId" onChange={handleChange} />
@@ -155,20 +147,42 @@ function Players() {
             </option>
           ))}
         </select>
-        <button className='jbutton' type="button" onClick={enviarPlayers}>Comprar Jugador</button>
+        <button className='jbutton' type="button" onClick={enviarPlayers} style={{margin: '1vh'}}>Comprar Jugador</button>
       </form>
-      <div className='Jimg' style={{ position: 'relative', textAlign: 'center'}}>
+      <h4 className='precio'>Precio: {typeof player.price === 'number' ? player.price.toLocaleString() : player.price}€</h4>
+      <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}>
         <CardJ />
-        <div className='datosCard'>
-        <p style={{ position: 'absolute', marginLeft: 85,   marginTop: 110, top: 0 , left: 0,  fontSize: 70, color: 'black' }}>{player.position}</p>
-        <h4 style={{ position: 'absolute', marginLeft: 125,   marginTop: 390, top: 0 , left: 0, color: 'black' }}> {player.name} ({player.rating})</h4>
-        <p style={{ position: 'absolute', marginLeft: 120,   marginTop: 410, top: 0 , left: 0, fontSize: 100, color: 'red' }}>{player.attack}</p>
-        <p style={{ position: 'absolute', marginLeft: 280,   marginTop: 410, top: 0 , left: 0,  fontSize: 100, color: 'green' }}>{player.defense}</p>
+        <div className='datosCard' style={{ textAlign: 'center' }}>
+          <p style={{ position: 'absolute', marginLeft: 85, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.position}</p>
+          <p style={{ position: 'absolute', marginLeft: 350, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.rating}</p>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}>
+            <h4 style={{ color: 'black' }}>{player.name}</h4>
+          </div>
+          <p style={{ position: 'absolute', marginLeft: 120, marginTop: 410, top: 0, left: 0, fontSize: 100, color: 'red' }}>{player.attack}</p>
+          <p style={{ position: 'absolute', marginLeft: 280, marginTop: 410, top: 0, left: 0, fontSize: 100, color: 'green' }}>{player.defense}</p>
         </div>
-        <img src={imageSrc} style={{ position: 'absolute', marginLeft: 80,  marginTop: 40, top: 0 , left: 0,  height: 350 }} alt="Imagen del jugador" />
+        <img src={imageSrc} style={{ position: 'absolute', marginLeft: 80, marginTop: 47, top: 0, left: 0, height: 350 }} alt="Imagen del jugador" />
+      </div>
+      <div className='datosjug' style={{marginTop:'190px',  justifyContent: 'center', alignItems: 'center',}}>
+      <h4>Datos adicionales del jugador</h4>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'black'}}>
+      <div style={{color:'black', justifyContent: 'center', alignItems: 'center',}}>
+      <p>Pie preferido: {player.foot}</p>
+      <p>Altura: {player.height} cm</p>
+      <p>Edad: {player.age}</p>
+      </div>
+      <div style={{color:'black', justifyContent: 'center', alignItems: 'center',}}>
+      <p>Club: {player.club}</p>
+      <p>Categoria: {player.color}</p>
+      <p>
+        Liga: {player.league} <img src={laliga} style={{ height: 40 }} alt="Imagen de la liga" />
+      </p>
+      
+      
+      </div>
       </div>
 
-
+      </div>
     </div>
   );
 }

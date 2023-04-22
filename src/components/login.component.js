@@ -31,7 +31,8 @@ export default class Login extends Component {
             />
             <label className="custom-control-label" htmlFor="customCheck1">
               Remember me
-            </label>
+            </label><br></br>
+          <a href='/sign-up'>Todavia no tienes cuenta?</a>
           </div>
         </div>
         <div className="d-grid">

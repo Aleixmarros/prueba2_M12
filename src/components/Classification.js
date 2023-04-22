@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../App.css';
 import barça from "../components/logoC/barça.png"
 import "bootstrap/dist/css/bootstrap.min.css";
 import madrid from '../components/logoC/real madrid.png';
@@ -30,7 +31,7 @@ export default class Classification extends Component {
   const GF1 = [49];
   const GC1 = [9], GC2 = [24];
     return (
-      <div>
+      <div className='classificacion'>
       <div class="row">
           <div class="col-17">
             {/* <marquee scrollamount="20">LaLiga Santander Qualifiers 2022 - 2023</marquee> */}
