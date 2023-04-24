@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import "./myTeams.css";
-import CardJ from './ImgJ';
+import Jimg from './ImgJ';
 
 
 const images = {};
@@ -106,6 +106,7 @@ const MyTeam = () => {
     
     return (
         <div>
+            <Jimg />
             <h2 className="titulo2">My Team</h2>
             <article onDragOver={(event) => event.preventDefault()}>
                 <section className="containerMyTeam">

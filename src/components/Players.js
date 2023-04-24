@@ -3,7 +3,6 @@ import jugadoresLS_53 from '../JugadoresLS_53.json';
 import '../App.css';
 import laliga from '../img/laliga-logo.png';
  import fcard from './imgJugadores/1.png';
-import CardJ from './ImgJ';
 
 function Players() {
   const [player, setPlayer] = useState({});
