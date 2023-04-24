@@ -72,7 +72,7 @@ function Players() {
     // Función para obtener los datos de la API
     const obtenerDatos = async () => {
       try {
-        const response = await fetch('E:/M12/React/prueba2/prueba2/futmanDB.json'); // URL de la API
+        const response = await fetch('https://github.com/Aleixmarros/prueba2_M12/blob/19794a19316e3ff49c43f5c1918b1043fbe17745/futmanDB.json'); // URL de DB Joan
         const data = await response.json(); // Obtener los datos en formato JSON
 
         // Transformación de los datos obtenidos
