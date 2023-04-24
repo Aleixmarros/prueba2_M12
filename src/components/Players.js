@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import jugadoresLS_53 from '../JugadoresLS_53.json';
 import '../App.css';
 import laliga from '../img/laliga-logo.png';
-// import fcard from './imgJugadores/1.png';
+ import fcard from './imgJugadores/1.png';
 import CardJ from './ImgJ';
 
 function Players() {
@@ -151,7 +151,8 @@ function Players() {
       </form>
       <h4 className='precio'>Precio: {typeof player.price === 'number' ? player.price.toLocaleString() : player.price}€</h4>
       <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}>
-        <CardJ />
+        <img src={fcard}alt="card" className='Jimg' style={{ height: 750}}/>
+        {/* <CardJ /> */}
         <div className='datosCard' style={{ textAlign: 'center' }}>
           <p style={{ position: 'absolute', marginLeft: 85, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.position}</p>
           <p style={{ position: 'absolute', marginLeft: 350, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.rating}</p>
