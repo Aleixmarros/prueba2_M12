@@ -44,6 +44,8 @@ function OffcanvasExample() {
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
                                     {loggedIn ? (
                                         <>
+                                                            <h2 className="hovertown titulo titulo2 d-block d-sm-block d-md-block d-xl-none d-xxl-none">{titulo}</h2>
+
                                             <Nav.Link href="/Home" className="text-white">Home</Nav.Link>
                                             <Nav.Link href="/Play" className="text-white">Play</Nav.Link>
                                             <Nav.Link href="/Classification" className="text-white">Classification</Nav.Link>

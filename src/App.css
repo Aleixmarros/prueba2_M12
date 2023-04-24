@@ -41,6 +41,7 @@ body {
 @media (max-width: 991.98px) {
   .titulo2 {
   display: none;
+  overflow: hidden;
   
   }
   }
