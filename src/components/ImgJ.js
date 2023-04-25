@@ -8,7 +8,7 @@ const Jimg = ({ src, alt }) => {
 
   useEffect(() => {
     // Carga las imágenes de los jugadores
-    jugadoresLS_53.forEach((player) => {
+    jugadoresLS_53.slice(0, 15).forEach((player) => {
       import(`./imgJugadores/${player.id}.png`).then((image) => {
         setImages((prevState) => ({
           ...prevState,
@@ -20,7 +20,7 @@ const Jimg = ({ src, alt }) => {
 
   return (
     <>
-      {jugadoresLS_53.map((player) => (
+      {jugadoresLS_53.slice(0, 15).map((player) => (
         <div className='players-container' key={player.id}>
           <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}>
             <img src={fcard} alt="card" className='Jimg' style={{ height: 750 }} />
