@@ -3,7 +3,7 @@ import '../App.css';
 import fcard from './imgJugadores/1.png';
 import jugadoresLS_53 from '../JugadoresLS_53.json';
 
-const Jimg = ({ src, alt }) => {
+const Jimg = ({ id }) => {
   const [images, setImages] = useState({});
 
   useEffect(() => {
@@ -18,11 +18,28 @@ const Jimg = ({ src, alt }) => {
     });
   }, []);
 
+  const handleDragStart = (event, playerId) => {
+    event.dataTransfer.setData('text/plain', playerId);
+    event.dataTransfer.setDragImage(event.target, 0, 0);
+    setImages({ ...images, [playerId]: images });
+  };
+  const handleDragEnd = () => {
+    // Limpia el estado del componente cuando el jugador se suelta
+    setImages({});
+  };
+
   return (
     <>
+     <div
+      className='Jimg'
+      draggable={true}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
       {jugadoresLS_53.slice(0, 15).map((player) => (
         <div className='players-container' key={player.id}>
-          <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}>
+          <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}
+            draggable="true" onDragStart={(event) => handleDragStart(event, player.id, player.image)} onDragEnd={handleDragEnd}>
             <img src={fcard} alt="card" className='Jimg' style={{ height: 750 }} />
             <div className='datosCard' style={{ textAlign: 'center' }}>
               <p style={{ position: 'absolute', marginLeft: 85, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.position}</p>
@@ -37,6 +54,7 @@ const Jimg = ({ src, alt }) => {
           </div>
         </div>
       ))}
+      </div>
     </>
   );
 };

@@ -106,7 +106,12 @@ const MyTeam = () => {
     
     return (
         <div>
-            <Jimg />
+             <div
+      className='DropTarget'
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+    >
+            <Jimg draggable />
             <h2 className="titulo2">My Team</h2>
             <article onDragOver={(event) => event.preventDefault()}>
                 <section className="containerMyTeam">
@@ -152,6 +157,7 @@ const MyTeam = () => {
                     <button className="button" onClick={reset}><p>Reiniciar</p></button>
                 </section>
             </article>
+        </div>
         </div>
     );
 };
