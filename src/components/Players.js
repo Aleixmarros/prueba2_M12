@@ -156,14 +156,14 @@ function Players() {
           <p style={{ position: 'absolute', marginLeft: 85, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.position}</p>
           <p style={{ position: 'absolute', marginLeft: 350, marginTop: 110, top: 0, left: 0, fontSize: 70, color: 'black' }}>{player.rating}</p>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}>
-            <h4 style={{ color: 'black' }}>{player.name}</h4>
+            <h4 style={{ color: 'black', textAlign:'center', position: 'absolute', marginLeft: 145, marginTop: 395, top: 0, left: 0, fontSize: 25}}>{player.name}</h4>
           </div>
           <p style={{ position: 'absolute', marginLeft: 120, marginTop: 410, top: 0, left: 0, fontSize: 100, color: 'red' }}>{player.attack}</p>
           <p style={{ position: 'absolute', marginLeft: 280, marginTop: 410, top: 0, left: 0, fontSize: 100, color: 'green' }}>{player.defense}</p>
         </div>
         <img src={imageSrc} style={{ position: 'absolute', marginLeft: 80, marginTop: 47, top: 0, left: 0, height: 350 }} alt="Imagen del jugador" />
       </div>
-      <div className='datosjug' style={{marginTop:'190px',  justifyContent: 'center', alignItems: 'center',}}>
+      <div className='datosjug' style={{marginTop:'250px',  justifyContent: 'center', alignItems: 'center',}}>
       <h4>Datos adicionales del jugador</h4>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', color: 'black'}}>
       <div style={{color:'black', justifyContent: 'center', alignItems: 'center',}}>

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import "./myTeams.css";
+import jugadoresLS_53 from '../JugadoresLS_53.json';
 import Jimg from './ImgJ';
+import fcard from './imgJugadores/1.png';
+
 
 
 const images = {};
@@ -48,7 +51,40 @@ const MyTeam = () => {
     const [futbolistasRestantes, setFutbolistasRestantes] = useState(futbolistas);
     const [personas, setPersonas] = useState([]);
 
+    const [player, setPlayer] = useState({});
+    const [jugadoresOrdenados, setJugadoresOrdenados] = useState([]);
+    const [imageSrc, setImageSrc] = useState('17226');
 
+    const [images, setImages] = useState({});
+
+  useEffect(() => {
+    // Carga las imágenes de los jugadores
+    jugadoresLS_53.slice(0, 15).forEach((player) => {
+      import(`./imgJugadores/${player.id}.png`).then((image) => {
+        setImages((prevState) => ({
+          ...prevState,
+          [player.id]: image.default,
+        }));
+      });
+    });
+  }, []);
+
+  const handleDragStart = (event, playerId) => {
+    event.dataTransfer.setData('text/plain', playerId);
+    event.dataTransfer.setDragImage(event.target, 0, 0);
+    setImages({ ...images, [playerId]: images });
+  };
+
+  const handleDragEnd = () => {
+    // Limpia el estado del componente cuando el jugador se suelta
+    setImages({});
+  };
+
+    useEffect(() => {
+        const jugadores = [...jugadoresLS_53];
+        setJugadoresOrdenados(jugadores);
+        jugadores.sort((a, b) => b.rating - a.rating);
+      }, []);
 
     // Función para obtener los datos de la API
     const obtenerDatos = async () => {
@@ -71,9 +107,7 @@ const MyTeam = () => {
       }
     }
     obtenerDatos(); // Llamada a la función obtenerDatos al cargar el componente
-    const handleDragStart = (event, index) => {
-        event.dataTransfer.setData("index", index);
-    };
+    
 
     const handleDragOver = (event) => {
         event.preventDefault();
@@ -106,19 +140,19 @@ const MyTeam = () => {
     
     return (
         <div>
+        {/* <Jimg draggable /> */}
              <div
       className='DropTarget'
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-            <Jimg draggable />
             <h2 className="titulo2">My Team</h2>
             <article onDragOver={(event) => event.preventDefault()}>
                 <section className="containerMyTeam">
                     <div className="plantilla">
-                        <ul className="plantilla-list">
+                        <ul className="plantilla-list"> 
                             {plantilla.map((posicion) => (
-                                <li
+                                <li 
                                     key={posicion.id}
                                     className={`plantilla-item ${posicion.posicion}`}
                                     onDragOver={handleDragOver}
@@ -126,6 +160,8 @@ const MyTeam = () => {
                                 >
                                     <div className="plantilla-item__nombre">{posicion.posicion}</div>
                                     <div className="plantilla-item__jugador">
+                                    <img src={fcard} style={{height: '250px',zIndex: -20, marginLeft: '-60px', marginBottom: '-40px', marginRight: '-60px', marginTop: '-20px'}} />
+ 
                                         
                                         {posicion.jugador ? (
                                             <div className="futbolista">
@@ -140,8 +176,29 @@ const MyTeam = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="futbolistas">
-                        {futbolistas.map((futbolista, index) => (
+                    
+                    <div className="futbolistas" style={{position: 'fixed', marginBottom: '-135px', height: '50px'}} >
+                    <div className='JimgM' draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+                    {jugadoresLS_53.slice(0, 15).map((player) => (
+                        <div className='players-container' key={player.id}>
+                        <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}
+                            draggable="true" onDragStart={(event) => handleDragStart(event, player.id, player.image)} onDragEnd={handleDragEnd}>
+                            <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
+                            <div className='datosCard' style={{ textAlign: 'center' }}>
+                            <p style={{ position: 'absolute', marginLeft: 25, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
+                            <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}>
+                            {/* <h4 style={{ color: 'black', position: 'absolute', marginLeft: 50, marginTop: 50, top: 0, left: 0, fontSize: 15 }}>{player.name}</h4> */}
+                            </div>
+                            <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
+                            <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
+                            </div>
+                            <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
+                        </div>
+        </div>
+      ))}
+      </div>
+                        {/* {futbolistas.map((futbolista, index) => (
                             <div
                                 key={futbolista.id}
                                 className="futbolista"
@@ -151,10 +208,10 @@ const MyTeam = () => {
                                 
                                 <img className="futbolista__img imgJ" src={futbolista.imagen} alt={futbolista.nombre} />
                                 <div className="futbolista__nombre">{futbolista.nombre}</div>
-                            </div>
-                        ))}
+                            </div> */}
+                        {/* ))} */}
                     </div>
-                    <button className="button" onClick={reset}><p>Reiniciar</p></button>
+                    {/* <button className="button" onClick={reset}><p>Reiniciar</p></button> */}
                 </section>
             </article>
         </div>

@@ -8,6 +8,7 @@ article {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 170px;
 }
 
 .titulo2 {
@@ -23,8 +24,8 @@ article {
 }
 
 .containerMyTeam {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 50%;
   margin-top: 6%;
   /* background-image: url(../img/campoMyTeam.png); */
   background-size: cover;
@@ -36,8 +37,8 @@ article {
 }
 
 .posicion {
-  height: 100px;
-  width: 100px;
+  /* height: 100px;
+  width: 100px; */
   margin: 0px;
   border: 2px solid white;
   display: flex;
@@ -58,10 +59,12 @@ article {
 
 .futbolista {
   height: 110px;
-  width: 110px;
+  width: 10px;
   margin: 0px;
   /* border: 2px solid white; */
   cursor: move;
+  position: fixed;
+  bottom: 0;
 }
 
 .imgJ {
@@ -69,12 +72,18 @@ article {
   width: 150px;
 }
 
-.Jimg{
-}
+.JimgM{
+  display: flex;
+  flex-direction: row;
+  }
 
 .plantilla-item {
   position: relative;
   z-index: 1;
+  /* background-image: url('./imgJugadores/1.png');
+  background-size: 200px;
+  background-size: cover; */
+  /* padding: 3px; */
 }
 
 /* .plantilla-item {
@@ -87,8 +96,8 @@ article {
 
 .plantilla-list {
   list-style: none;
-  margin: 0;
-  width: 10;
+  /* margin-left: 400px; */
+  /* width: 10; */
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +107,7 @@ article {
 .plantilla-item {
   width: calc(30% - 1rem);
   margin: 0.5rem;
-  width: 10;
+  width: 1;
   text-align: center;
   /* border: 0.5px solid #ccc; */
   border-radius: 0.25rem;
@@ -117,9 +126,9 @@ article {
 
 
 .hueco {
-  height: 40px;
-  margin: 60px;
-  width: 10px;
+  height: 4px;
+  margin: 6px;
+  width: 1px;
   /* border: 2px dashed white; */
   flex-shrink: 0; /* Evita que el elemento se reduzca */
 }
@@ -150,7 +159,7 @@ article {
 .hueco.vacio{
   display: none;
   opacity: 0.1;
-  width: 1%;
+  width: 1px;
 }
 
 .plantilla-item.DFC{
