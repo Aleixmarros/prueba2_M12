@@ -1,0 +1,56 @@
+body{
+    text-align: center;
+}
+
+.about-us-container {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    height: 80vh;
+    background: linear-gradient(to right, #0072ff ,#ffef13, #e91111, #04ac66, #000000, #ff00f2);
+    background-size: 400% 400% ;
+    animation: gradient 10s ease infinite;
+    border-radius: 15px;
+    margin-top: 3%;
+    font-family:'liga-sans' ;
+    font-size: 3vh;
+
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 75% 40%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .about-us-container h1 {
+    font-size: 10vh;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-container p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 20px;
+
+  }
+  
+  .about-us-image {
+    border:  2px solid #ccc;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
