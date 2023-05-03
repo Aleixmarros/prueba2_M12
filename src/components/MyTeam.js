@@ -160,7 +160,10 @@ const MyTeam = () => {
                                 >
                                     <div className="plantilla-item__nombre">{posicion.posicion}</div>
                                     <div className="plantilla-item__jugador">
-                                    <img src={fcard} style={{height: '250px',zIndex: -20, marginLeft: '-60px', marginBottom: '-40px', marginRight: '-60px', marginTop: '-20px'}} />
+                                    <img src={fcard} key={posicion.id}
+                                    className={`${posicion.posicion}`}
+                                    onDragOver={handleDragOver}
+                                    onDrop={(event) => handleDrop(event, posicion.orden - 1)} style={{height: '250px',zIndex: -20, marginLeft: '-60px', marginBottom: '-40px', marginRight: '-60px', marginTop: '-20px'}} />
  
                                         
                                         {posicion.jugador ? (
@@ -177,11 +180,11 @@ const MyTeam = () => {
                         </ul>
                     </div>
                     
-                    <div className="futbolistas" style={{position: 'fixed', marginBottom: '-135px', height: '50px'}} >
+                    <div className="futbolistas" style={{position: 'fixed', marginBottom: '-10px', height: '50px'}} >
                     <div className='JimgM' draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                     {jugadoresLS_53.slice(0, 15).map((player) => (
                         <div className='players-container' key={player.id}>
-                        <div className='Jimg' style={{ position: 'relative', textAlign: 'center' }}
+                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}
                             draggable="true" onDragStart={(event) => handleDragStart(event, player.id, player.image)} onDragEnd={handleDragEnd}>
                             <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
                             <div className='datosCard' style={{ textAlign: 'center' }}>
