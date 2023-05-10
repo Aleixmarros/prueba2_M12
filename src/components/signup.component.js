@@ -71,9 +71,6 @@ export default function SignUp() {
               )}
             </Dropzone>
           </div>
-          <button type="submit" className="btn btn-primary" style={{margin: '1vh'}}>
-            Guardar
-          </button>
         </form>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">

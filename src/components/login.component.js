@@ -68,7 +68,7 @@ function Login({ loggedIn, handleLogin }) {
           
         </div>
         <p className="forgot-password text-right">
-          Forgot <a href="/forgot-password">password?</a>
+          Forgot <a href="/profile">password?</a>
         </p>
       </div>
     </form>
