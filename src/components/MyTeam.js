@@ -61,7 +61,7 @@ const MyTeam = () => {
     const [images, setImages] = useState({});
     useEffect(() => {
         // Carga las imágenes de los jugadores
-        Jugador.forEach((player) => {
+        Jugador[0].Jugador.forEach((player) => {
             import(`./imgJugadores/${player.id}.png`).then((image) => {
                 setImages((prevState) => ({
                     ...prevState,
@@ -164,7 +164,7 @@ const MyTeam = () => {
 
                         <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }} >
                             <div className='JimgM' >
-                                {Jugador.map((player) => (
+                                {Jugador[0].Jugador.map((player, index) => (
                                     <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
                                         <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}
                                             draggable={true}
