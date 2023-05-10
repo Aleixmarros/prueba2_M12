@@ -10,7 +10,7 @@ function Login({ loggedIn, handleLogin }) {
     const email = document.querySelector('#email-input').value;
     const password = document.querySelector('#password-input').value;
 
-    fetch('http://localhost:3000/futmanUsers/login', {
+    fetch('http://localhost:3005/futmanUsers/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {
