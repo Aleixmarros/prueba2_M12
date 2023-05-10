@@ -1,0 +1,33 @@
+.ContainerPlay{
+    height: 800px;
+    width: 1850px;
+    background-image: url(../img/campoPlay.png);
+    background-size: cover;
+    /* Agregar el siguiente estilo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.wrapper {
+    background: url(../img/bg.png);
+    background-attachment: fixed;
+    background-position: center 400px; 
+    color: #eee;
+    width: 100%; 
+    height: 100vh; 
+    justify-content: center; 
+    align-items: center; 
+    perspective: 1000px; 
+    perspective-origin: 50% 50%; 
+    animation: animation 100s linear infinite;
+    border-radius: 1%;
+  }
+  
+  @keyframes animation {
+     100%{
+      background-position:0px -3000px;
+    }
+  }

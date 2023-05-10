@@ -142,7 +142,7 @@ function Players() {
         <select className='listaJugadores' value={playerId} onChange={handleSelectChange}>
           {jugadoresOrdenados.map((player) => (
             <option key={player.id} value={player.id}>
-              {player.name} ({player.rating})
+              {player.name} ({player.rating}) ({player.position})
             </option>
           ))}
         </select>

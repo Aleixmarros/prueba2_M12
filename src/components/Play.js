@@ -1,8 +1,26 @@
-import React, { Component } from 'react'
-export default class Play extends Component {
-  render() {
+import React, {  useEffect } from "react";
+import "../App.css";
+import "./Play.css";
+import jugadoresP from '../jugadoresPlay.json';
+
+
+
+const Play = () => {
+
+
+
+   
+
     return (
-        <p>Play</p>
-    )
-  }
-}
+        <div className="wrapper">       
+          <article >
+                <section className="ContainerPlay">
+                       
+
+                    </section>
+                </article>
+                </div>
+    );
+};
+
+export default Play;

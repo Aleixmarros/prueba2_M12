@@ -171,7 +171,7 @@ const MyTeam = () => {
                 onDragOver={handleDragOver}
             >
                 <h2 className="titulo2">My Team</h2>
-                <article onDragOver={(event) => event.preventDefault()}>
+                <article className="articleM" onDragOver={(event) => event.preventDefault()}>
                     <section className="containerMyTeam">
                         <div className="plantilla">
                             <ul className="plantilla-list">
