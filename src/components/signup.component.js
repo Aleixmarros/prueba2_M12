@@ -12,41 +12,48 @@ export default function SignUp() {
     event.preventDefault();
     // Aquí debes implementar el código para subir la imagen a un servidor o a un servicio de almacenamiento en la nube
     // y guardar la URL de la imagen en la base de datos de tu aplicación.
+    const name = document.querySelector('#first-name-input').value;
+    const surname = document.querySelector('#last-name-input').value;
+    const email = document.querySelector('#email-input').value;
+    const password = document.querySelector('#password-input').value;
+
+    fetch('http://localhost:3005/futmanUsers', {
+      method: 'POST',
+      body: JSON.stringify({ name, surname, email, password }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        alert(data.message);
+        // Actualiza la tabla de usuarios con el nuevo registro
+      })
+      .catch(error => console.error(error));
   };
 
   return (
-    <form className='form'>
+    <form className='form' onSubmit={handleSubmit}>
       <div className="container text-center justify-content-center ">
         <h3>Sign Up</h3><br></br>
         <div className="mb-3">
           <label>First name</label>
-          <input
-            type="text"
-            className="form-control cen"
-            placeholder="First name"
-          />
+          <input type="text" className="form-control" placeholder="First name" id="first-name-input" required/>
         </div>
         <div className="mb-3">
           <label>Last name</label>
-          <input type="text" className="form-control" placeholder="Last name" />
+          <input type="text" className="form-control" placeholder="Last name" id="last-name-input" required/>
         </div>
         <div className="mb-3">
           <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-          />
+          <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z]+(\.[a-zA-Z]{2,})+" className="form-control" placeholder="Enter email (abcde123@gmail.com)" id="email-input" required/>
         </div>
         <div className="mb-3">
           <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-          />
+          <input type="password" className="form-control" placeholder="Enter password" id="password-input" required/>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form >
           <div className="mb-3">
             <label htmlFor="avatar" className="form-label">
               Avatar
@@ -64,6 +71,9 @@ export default function SignUp() {
               )}
             </Dropzone>
           </div>
+          <button type="submit" className="btn btn-primary" style={{margin: '1vh'}}>
+            Guardar
+          </button>
         </form>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
