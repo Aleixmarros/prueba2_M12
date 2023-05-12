@@ -18,16 +18,7 @@ import Players from "./Players";
 // importAll(require.context("./imgJugadores", false, /\.(png|jpe?g|svg)$/));
 
 const futbolistas = [
-    // { id: "1", nombre: "Oblak", imagen: images["./2680.png"], uniqueId: "1" },
-    // { id: "2", nombre: "Carrascó", imagen: images["./2681.png"], uniqueId: "2" },
-    // { id: "3", nombre: "Savíc", imagen: images["./2682.png"], uniqueId: "3" },
-    // { id: "4", nombre: "M.Llorente", imagen: images["./2683.png"], uniqueId: "4" },
-    // { id: "5", nombre: "De Paul", imagen: images["./2684.png"], uniqueId: "5" },
-    // { id: "6", nombre: "Joao", imagen: images["./2685.png"], uniqueId: "6" },
-    // { id: "7", nombre: "Correa", imagen: images["./2686.png"], uniqueId: "7" },
-    // { id: "8", nombre: "Griezman", imagen: images["./2687.png"], uniqueId: "8" },
-    // { id: "9", nombre: "Lemar", imagen: images["./2688.png"], uniqueId: "9" },
-    // { id: "10", nombre: "Koke", imagen: images["./2689.png"], uniqueId: "10" },
+
     { id: "11", nombre: "Gimenez", imagen: ["./2690.png"], uniqueId: "11" },
 ];
 
