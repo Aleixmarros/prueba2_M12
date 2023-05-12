@@ -1,31 +1,12 @@
 import React, { Component } from 'react';
 import '../App.css';
-import barça from "../components/logoC/barça.png"
 import "bootstrap/dist/css/bootstrap.min.css";
-import madrid from '../components/logoC/real madrid.png';
-import atlético from '../components/logoC/atlético de madrid.png';
-import sociedad from '../components/logoC/real sociedad.png';
-import betis from '../components/logoC/betis.png';
-import villareal from '../components/logoC/villareal.png';
-import athletic from '../components/logoC/athletic.png';
-import rayo from '../components/logoC/rayo.png';
-import osasuna from '../components/logoC/osasuna.png';
-import celta from '../components/logoC/celta.png';
-import mallorca from '../components/logoC/mallorca.png';
-import girona from '../components/logoC/girona.png';
-import getafe from '../components/logoC/getafe.png';
-import sevilla from '../components/logoC/sevilla.png';
-import cádiz from '../components/logoC/cádiz.png';
-import valladolid from '../components/logoC/valladolid.png';
-import español from '../components/logoC/español.png';
-import valencia from '../components/logoC/valencia.png';
-import almeria from '../components/logoC/almeria.png';
-import elche from '../components/logoC/elche.png';
 export default class Classification extends Component {
   render() {
     const PT1 = [68], PT2 = [56], PT3 = [51], PT4 = [48], PT5 = [45], PT6 = [41], PT7 = [36], PT8 = [36], PT9 = [34], PT10 = [34], PT11 = [32], PT12 = [31], PT13 = [29], PT14 = [28], PT15 = [28], PT16 = [28], PT17 = [27], PT18 = [26], PT19 = [26], PT20 = [13];
   const PJ1 = [26];
   const PG1 = [22], PG2 = [17], PG3 = [15], PG4 = [14], PG5 = [13], PG6 = [12], PG7 = [10], PG8 = [9], PG12 = [8], PG13 = [7], PG15 = [6], PG20 = [2];
+  const PE1 = [2];
   const PP1 = [2];
   const GF1 = [49];
   const GC1 = [9], GC2 = [24];
@@ -45,6 +26,7 @@ export default class Classification extends Component {
             <th>PT</th>
             <th>PJ</th>
             <th>PG</th>
+            <th>PE</th>
             <th>PP</th>
             <th>GF</th>
             <th>GC</th>
