@@ -9,7 +9,7 @@ import k1 from '../img/k1.png';
 
 
 
-const Player = ({ player }) => {
+const Player = ({ player, onSelectPlayer }) => {
     const [images, setImages] = useState({});
     useEffect(() => {
         // Carga las imágenes de los jugadores y calcula los totales de precios
@@ -32,23 +32,22 @@ const Player = ({ player }) => {
         });
     }, []);
 
+
     return (
 
-        <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
-
-            <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
-                <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
-                <div className='datosCard' style={{ textAlign: 'center' }}>
-                    <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
-                    <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}></div>
-                    <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
-                    <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
+            <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
+                <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
+                    <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
+                    <div className='datosCard' style={{ textAlign: 'center' }}>
+                        <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
+                        <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}></div>
+                        <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
+                        <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
+                    </div>
+                    <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
                 </div>
-                <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
             </div>
-        </div>
-
     );
 };
 
@@ -106,6 +105,15 @@ const PlayerList = () => {
     const playerToShow211 = Jmaquina.find(player => player.id === playerIdToShow211);
 
 
+
+    const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(0);
+    const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(0);
+    const handleSelectPlayer = (player) => {
+        setSelectedPlayerAttack(player.attack);
+        setSelectedPlayerDefense(player.defense);
+    };
+
+
     const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
 
 
@@ -157,57 +165,61 @@ const PlayerList = () => {
                 <div className="team-container">
                     <div className="team1">
                         <div className="team1-content">
-                            <h1>K1LLERS TEAM <img src={k1} style={{ width: "10vh"}} alt="k1"/></h1> 
+                            <h1>K1LLERS TEAM <img src={k1} style={{ width: "10vh" }} alt="k1" /></h1>
                             <h4>Media de ratings K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</h4>
                             <h4>Precio total equipo K1LLERS TEAM: {typeof teamPrices.equipo1 === 'number' ? teamPrices.equipo1.toLocaleString() : teamPrices.equipo1}€</h4>
                         </div>
                     </div>
                     <div className="team2">
                         <div className="team2-content">
-                            <h1>PEPE FC <img src={pepe} style={{ width: "10vh"}} alt="pepe"/></h1>
+                            <h1>PEPE FC <img src={pepe} style={{ width: "10vh" }} alt="pepe" /></h1>
                             <h4>Media de ratings PEPE FC: {teamRatings.equipo2.toFixed(2)}</h4>
                             <h4>Precio total equipo PEPE FC: {typeof teamPrices.equipo2 === 'number' ? teamPrices.equipo2.toLocaleString() : teamPrices.equipo2}€</h4>
                         </div>
                     </div>
                 </div>
-
+                <div className="valors">
+                <h4>Ataque del jugador seleccionado: {selectedPlayerAttack}<br></br>
+                Defensa del jugador seleccionado: {selectedPlayerDefense}</h4>
+                </div>
+                
 
 
 
                 <section className="ContainerPlay">
                     <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }}>
                         <div className="j1">
-                            <Player player={playerToShow} />
+                            <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j2">
-                            <Player player={playerToShow2} />
+                            <Player player={playerToShow2} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j3">
-                            <Player player={playerToShow3} />
+                            <Player player={playerToShow3} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j4">
-                            <Player player={playerToShow4} />
+                            <Player player={playerToShow4} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j5">
-                            <Player player={playerToShow5} />
+                            <Player player={playerToShow5} onSelectPlayer={handleSelectPlayer}/>
                         </div>
                         <div className="j6">
-                            <Player player={playerToShow6} />
+                            <Player player={playerToShow6} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j7">
-                            <Player player={playerToShow7} />
+                            <Player player={playerToShow7} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j8">
-                            <Player player={playerToShow8} />
+                            <Player player={playerToShow8} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j9">
-                            <Player player={playerToShow9} />
+                            <Player player={playerToShow9} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j10">
-                            <Player player={playerToShow10} />
+                            <Player player={playerToShow10} onSelectPlayer={handleSelectPlayer} />
                         </div>
                         <div className="j11">
-                            <Player player={playerToShow11} />
+                            <Player player={playerToShow11} onSelectPlayer={handleSelectPlayer} />
                         </div>
 
                         <div className="j21">
