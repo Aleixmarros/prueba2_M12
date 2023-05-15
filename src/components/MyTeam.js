@@ -9,14 +9,14 @@ import benzema from "./imgJugadores/17226.png"
 
 
 
-const images = {};
+// const images = {};
 
-function importAll(r) {
-    r.keys().forEach((key) => (images[key] = r(key)));
+// function importAll(r) {
+//     r.keys().forEach((key) => (images[key] = r(key)));
 
-}
+// }
 
-importAll(require.context("./imgJugadores", false, /\.(png|jpe?g|svg)$/));
+// importAll(require.context("./imgJugadores", false, /\.(png|jpe?g|svg)$/));
 
 const futbolistas = [
     { id: "1", nombre: "Benzema", imagen: ["./17226.png"], uniqueId: "1" },
@@ -182,7 +182,7 @@ const MyTeam = () => {
                                                 <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
                                                 <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
                                             </div>
-                                            <img src={images[player.imagen]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" onDragStart={(event) => handleDragStart(event, player.imagen)} draggable={true} onDragEnd={handleDragEnd} />
+                                            <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" onDragStart={(event) => handleDragStart(event, player.imagen)} draggable={true} onDragEnd={handleDragEnd} />
                                         </div>
                                     </div>
                                 ))}

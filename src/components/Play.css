@@ -31,3 +31,194 @@
       background-position:0px -3000px;
     }
   }
+
+  .team-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+  }
+  
+  .team1 {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1vh;
+    margin: 1vh;
+    margin-top: -15vh;
+    padding: 1vh;
+    padding-bottom: -10vh;
+  }
+  
+  .team2 {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1vh;
+    margin: 1vh;
+    margin-left: 85vh;
+    margin-top: -15vh;
+    padding: 1vh;
+    padding-bottom: -10vh;
+
+  }
+  
+  .team1-content {
+    /* Estilos para el contenido del equipo 1 */
+  }
+  
+  .team2-content {
+    /* Estilos para el contenido del equipo 2 */
+  }
+  
+
+/* Players */
+
+/* Benzema CF 97*/
+.j1{ 
+  position: absolute;
+  margin-top: -11vh;
+  margin-left: -25vh;
+  
+}
+/* CB 71 */
+.j2{
+  position: absolute;
+  margin-top: -6vh;
+  margin-left: -72vh;
+  
+}
+/* RB 71 */
+.j3{
+  position: absolute;
+  margin-top: 9vh;
+  margin-left: -84vh;
+  
+}
+/* J. Alba LB 88  */
+.j4{
+  position: absolute;
+  margin-top: -36vh;
+  margin-left: -48vh;
+  
+}
+/* LW 79 */
+.j5{
+  position: absolute;
+  margin-top: -27vh;
+  margin-left: -13vh;
+  
+}
+/* Raphinia RW 86 */
+.j6{
+  position: absolute;
+  margin-left: -37vh;
+  margin-top: 5vh;
+  
+}
+/* Militao CB 94 */
+.j7{
+  position: absolute;
+  margin-top: -21vh;
+  margin-left: -60vh;
+  
+}
+/* Courtois GK 96 */
+.j8{
+  position: absolute;
+  margin-left: -78vh;
+  margin-top: -26vh;
+}
+/* CM 80 */
+.j9{
+  position: absolute;
+  margin-top: -13vh;
+  margin-left: -45vh;
+  
+}
+/* RM 79 */
+.j10{
+  position: absolute;
+  margin-top: 3vh;
+  margin-left: -57vh;
+  
+}
+/* Lm 78 */
+.j11{
+  position: absolute;
+  margin-top: -29vh;
+  margin-left: -33vh;
+  
+}
+
+/* ST */
+.j21{ 
+  position: absolute;
+  margin-top: -11vh;
+  margin-left: 14vh;
+  
+}
+/* CB */
+.j22{
+  position: absolute;
+  margin-top: -6vh;
+  margin-left: 61vh;
+  
+}
+/* RB */
+.j23{
+  position: absolute;
+  margin-top: 9vh;
+  margin-left: 73vh;
+  
+}
+/* LB  */
+.j24{
+  position: absolute;
+  margin-top: -36vh;
+  margin-left: 37vh;
+  
+}
+/* LW  */
+.j25{
+  position: absolute;
+  margin-top: -27vh;
+  margin-left: 2vh;
+  
+}
+/* RW  */
+.j26{
+  position: absolute;
+  margin-top: 5vh;
+  margin-left: 26vh;
+  
+}
+/* CB  */
+.j27{
+  position: absolute;
+  margin-top: -21vh;
+  margin-left: 49vh;
+  
+}
+/* GK 96 */
+.j28{
+  position: absolute;
+  margin-top: -25vh;
+  margin-left: 68vh;
+}
+/* CM  */
+.j29{
+  position: absolute;
+  margin-top: -13vh;
+  margin-left: 34vh;
+  
+}
+/* RM  */
+.j210{
+  position: absolute;
+  margin-top: 3vh;
+  margin-left: 46vh;
+  
+}
+/* Lm  */
+.j211{
+  position: absolute;
+  margin-top: -29vh;
+  margin-left: 22vh;
+  
+}
