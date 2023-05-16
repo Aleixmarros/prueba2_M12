@@ -84,7 +84,7 @@ const Profile = () => {
           </div>
           <div className="mb-3">
   
-          <p><img src={k1} style={{ width: "5vh",marginRight: "10px", borderRadius: "50%" }} alt="k1" />  K1LLERS TEAM  </p>
+          <p><img src={k1} style={{ width: "6vh",marginRight: "10px", borderRadius: "50%" }} alt="k1" />  K1LLERS TEAM  </p>
 
             <label>Media de K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</label><br></br><br></br>
             <label>Precio total K1LLERS TEAM: {typeof teamPrices.equipo1 === 'number' ? teamPrices.equipo1.toLocaleString() : teamPrices.equipo1}€</label>

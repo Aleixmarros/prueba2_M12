@@ -35,6 +35,8 @@ export default class Profile extends Component {
           <input type="password" className="form-control" placeholder="Enter password" id="password-input" required />
 <br></br>
           <p className="forgot-password text-right">
+          <button type="submit" className="btn btn-primary" >Submit</button><br></br>
+
            <a href="/profile">Profile?</a>
         </p>
         </div>
