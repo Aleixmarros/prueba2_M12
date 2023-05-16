@@ -31,10 +31,17 @@ const Player = ({ player, onSelectPlayer }) => {
             });
         });
     }, []);
+    const handlePlayerClick = () => {
+        onSelectPlayer(player);
+    };
+
 
 
     return (
-
+        <div
+            key={player.id}
+            onClick={handlePlayerClick}
+        >
             <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
                 <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
                     <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
@@ -47,6 +54,7 @@ const Player = ({ player, onSelectPlayer }) => {
                     </div>
                     <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
                 </div>
+            </div>
             </div>
     );
 };
