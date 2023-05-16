@@ -10,60 +10,54 @@ import k1 from '../img/k1.png';
 const Player = ({ player, onSelectPlayer }) => {
     const [images, setImages] = useState({});
     const [showOptions, setShowOptions] = useState(false);
-    const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(0);
-  const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(0);
-
-  const handlePlayerClick = (player) => {
-    setShowOptions(true);
-
-    if (selectedPlayerAttack !== null && selectedPlayerDefense !== null) {
-      // Realizar la comparación
-      if (player.attack > selectedPlayerAttack) {
-        console.log('El ataque del jugador seleccionado es mayor que el primer clic');
-      } else if (player.attack < selectedPlayerAttack) {
-        console.log('El ataque del jugador seleccionado es menor que el primer clic');
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
+  
+    const handlePlayerClick = (player) => {
+      setShowOptions(true);
+      setSelectedPlayer(player);
+    };
+  
+    const handleSelectPlayerA = (player) => {
+      if (selectedPlayer && selectedPlayer !== player) {
+        const attackDiff = selectedPlayer.attack - player.defense;
+        console.log(`Diferencia de ataque: ${attackDiff}`);
       } else {
-        console.log('El ataque del jugador seleccionado es igual al primer clic');
+        console.log('El jugador no ha sido seleccionado correctamente');
       }
-
-      if (player.defense > selectedPlayerDefense) {
-        console.log('La defensa del jugador seleccionado es mayor que el primer clic');
-      } else if (player.defense < selectedPlayerDefense) {
-        console.log('La defensa del jugador seleccionado es menor que el primer clic');
+    };
+  
+    const handleSelectPlayerD = (player) => {
+      if (selectedPlayer && selectedPlayer !== player) {
+        const defenseDiff = selectedPlayer.defense - player.attack;
+        console.log(`Diferencia de defensa: ${defenseDiff}`);
       } else {
-        console.log('La defensa del jugador seleccionado es igual al primer clic');
+        console.log('El jugador no ha sido seleccionado correctamente');
       }
-    }
-
-    // Actualizar los valores del primer clic
-    setSelectedPlayerAttack(player.attack);
-    setSelectedPlayerDefense(player.defense);
-  };
-
+    };
+  
     useEffect(() => {
-        // Carga las imágenes de los jugadores y calcula los totales de precios
-        Jugadores.forEach((player) => {
-            import(`./imgJugadores/${player.id}.png`).then((image) => {
-                setImages((prevState) => ({
-                    ...prevState,
-                    [player.id]: image.default,
-                }));
-            });
+      Jugadores.forEach((player) => {
+        import(`./imgJugadores/${player.id}.png`).then((image) => {
+          setImages((prevState) => ({
+            ...prevState,
+            [player.id]: image.default,
+          }));
         });
-
-        Jmaquina.forEach((player) => {
-            import(`./imgJugadores/${player.id}.png`).then((image) => {
-                setImages((prevState) => ({
-                    ...prevState,
-                    [player.id]: image.default,
-                }));
-            });
+      });
+  
+      Jmaquina.forEach((player) => {
+        import(`./imgJugadores/${player.id}.png`).then((image) => {
+          setImages((prevState) => ({
+            ...prevState,
+            [player.id]: image.default,
+          }));
         });
+      });
     }, []);
-
+  
 
     return (
-        <div key={player.id} onClick={handlePlayerClick}  >
+        <div key={player.id} onClick={handlePlayerClick}>
             <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
                 <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
                     <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
@@ -78,15 +72,14 @@ const Player = ({ player, onSelectPlayer }) => {
                 </div>
             </div>
             {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+                <div>
+                    <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: 6, marginTop: 88, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
+                    <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 64, marginTop: 88, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
+                </div>
+            )}
         </div>
     );
 };
-
 const PlayerList = (player) => {
 
     // Jugadores
@@ -150,34 +143,12 @@ const PlayerList = (player) => {
     const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
     const [showOptions, setShowOptions] = useState(false);
 
-  const handlePlayerClick = (player) => {
-    setShowOptions(true);
-    setSelectedPlayerAttack(player.attack);
-    setSelectedPlayerDefense(player.defense);
+    const handlePlayerClick = (player) => {
+        setShowOptions(true);
+        setSelectedPlayerAttack(player.attack);
+        setSelectedPlayerDefense(player.defense);
+    };
 
-    if (selectedPlayerAttack !== null && selectedPlayerDefense !== null) {
-      // Realizar la comparación
-      if (player.attack > selectedPlayerAttack) {
-        console.log('El ataque del jugador seleccionado es mayor que el primer clic');
-      } else if (player.attack < selectedPlayerAttack) {
-        console.log('El ataque del jugador seleccionado es menor que el primer clic');
-      } else {
-        console.log('El ataque del jugador seleccionado es igual al primer clic');
-      }
-
-      if (player.defense > selectedPlayerDefense) {
-        console.log('La defensa del jugador seleccionado es mayor que el primer clic');
-      } else if (player.defense < selectedPlayerDefense) {
-        console.log('La defensa del jugador seleccionado es menor que el primer clic');
-      } else {
-        console.log('La defensa del jugador seleccionado es igual al primer clic');
-      }
-    }
-
-    // Actualizar los valores del primer clic
-    setSelectedPlayerAttack(player.attack);
-    setSelectedPlayerDefense(player.defense);
-  };
 
     useEffect(() => {
         let totalEquipo1 = 0;
@@ -244,202 +215,92 @@ const PlayerList = (player) => {
                     <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }}>
                         <div className="j1">
                             <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j2">
                             <Player player={playerToShow2} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j3">
                             <Player player={playerToShow3} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j4">
                             <Player player={playerToShow4} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j5">
                             <Player player={playerToShow5} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j6">
                             <Player player={playerToShow6} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j7">
                             <Player player={playerToShow7} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j8">
                             <Player player={playerToShow8} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j9">
                             <Player player={playerToShow9} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j10">
                             <Player player={playerToShow10} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j11">
                             <Player player={playerToShow11} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
 
                         <div className="j21">
                             <Player player={playerToShow21} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j22">
                             <Player player={playerToShow22} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j23">
                             <Player player={playerToShow23} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j24">
                             <Player player={playerToShow24} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j25">
                             <Player player={playerToShow25} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j26">
                             <Player player={playerToShow26} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j27">
                             <Player player={playerToShow27} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j28">
                             <Player player={playerToShow28} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j29">
                             <Player player={playerToShow29} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j210">
                             <Player player={playerToShow210} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                         <div className="j211">
                             <Player player={playerToShow211} onSelectPlayer={handleSelectPlayer} />
-                            {showOptions && (
-                                <div>
-                                    <button onClick={(event) => handlePlayerClick(event, player.attack)}>Atacar</button>
-                                    <button onClick={(event) => handlePlayerClick(event, player.defense)}>Defender</button>
-                                </div>
-                            )}
+
                         </div>
                     </div>
                 </section>
