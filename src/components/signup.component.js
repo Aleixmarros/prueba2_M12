@@ -33,6 +33,8 @@ export default function SignUp() {
       .catch(error => console.error(error));
   };
 
+  
+
   return (
     <form className='form' onSubmit={handleSubmit}>
       <div className="container text-center justify-content-center ">

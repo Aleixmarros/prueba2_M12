@@ -3,13 +3,13 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import axios from 'axios';
 import '../App.css';
 
 function OffcanvasExample() {
     const titulo = 'FutMan';
     const [loggedIn, setLoggedIn] = useState(true);    // si el usuario no ha iniciado sesión
     const [showElements, setShowElements] = useState(loggedIn);
-
 
     if (!loggedIn) {
         // Si el usuario no está logueado, oculta los elementos que no deseas mostrar
@@ -44,8 +44,7 @@ function OffcanvasExample() {
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
                                     {loggedIn ? (
                                         <>
-                                                            <h2 className="hovertown titulo titulo2 d-block d-sm-block d-md-block d-xl-block d-xxl-none">{titulo}</h2>
-
+                                           <h2 className="hovertown titulo titulo2 d-block d-sm-block d-md-block d-xl-block d-xxl-none">{titulo}</h2>
                                             <Nav.Link href="/Home" className="text-white">Home</Nav.Link>
                                             <Nav.Link href="/Play" className="text-white">Play</Nav.Link>
                                             <Nav.Link href="/Classification" className="text-white">Classification</Nav.Link>

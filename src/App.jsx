@@ -6,6 +6,7 @@ import Classification from './components/Classification';
 import Players from './components/Players';
 import Teams from './components/Teams';
 import Profile from './components/Profile';
+import Profile2 from './components/Profile-password';
 import AboutUs from './components/AboutUs';
 import Login from './components/login.component';
 import SignUp from './components/signup.component';
@@ -61,6 +62,7 @@ const App = () => {
           <Route path="/MyTeam2" element={<MyTeam2 />} />
           <Route path="/Teams" element={<Teams />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/Profile2" element={<Profile2 />} />          
           <Route path="/Login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/AboutUS" element={<AboutUs />} />
