@@ -7,33 +7,88 @@ import fcard from './imgJugadores/1.png';
 import pepe from '../img/pepe.png';
 import k1 from '../img/k1.png';
 
+
+
+
 const Player = ({ player, onSelectPlayer }) => {
     const [images, setImages] = useState({});
     const [showOptions, setShowOptions] = useState(false);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [selectedPlayers, setSelectedPlayers] = useState([]);
+    const [firstClickPlayer, setFirstClickPlayer] = useState(null);
+    const [secondClickPlayer, setSecondClickPlayer] = useState(null);
   
     const handlePlayerClick = (player) => {
       setShowOptions(true);
       setSelectedPlayer(player);
-    };
-  
-    const handleSelectPlayerA = (player) => {
-      if (selectedPlayer && selectedPlayer !== player) {
-        const attackDiff = selectedPlayer.attack - player.defense;
-        console.log(`Diferencia de ataque: ${attackDiff}`);
-      } else {
-        console.log('El jugador no ha sido seleccionado correctamente');
+      if (selectedPlayers.length < 2) {
+        setSelectedPlayers([...selectedPlayers, player]);
       }
     };
-  
-    const handleSelectPlayerD = (player) => {
-      if (selectedPlayer && selectedPlayer !== player) {
-        const defenseDiff = selectedPlayer.defense - player.attack;
+    
+
+    
+    const comparePlayers = () => {
+      if (selectedPlayers.length === 2) {
+        const player1 = selectedPlayers[0];
+        const player2 = selectedPlayers[1];
+        const attackDiff = player1.attack - player2.defense;
+        const defenseDiff = player1.defense - player2.attack;
+        console.log(`Diferencia de ataque: ${attackDiff}`);
         console.log(`Diferencia de defensa: ${defenseDiff}`);
       } else {
-        console.log('El jugador no ha sido seleccionado correctamente');
+        console.log('No se han seleccionado dos jugadores');
       }
     };
+  
+    // const handleSelectPlayer = (player) => {
+    //   if (!firstClickPlayer) {
+    //     setFirstClickPlayer(player);
+    //     console.log('Primer jugador seleccionado');
+    //   } else if (!secondClickPlayer) {
+    //     setSecondClickPlayer(player);
+    //     console.log('Segundo jugador seleccionado');
+    //     comparePlayers(player);
+    //   } else {
+    //     console.log('Ya se han seleccionado dos jugadores');
+    //   }
+    // };
+    // const comparePlayers = (player1, player2) => {
+    //   if (player1 && player2) {
+    //     const attackDiff = player1.attack - player2.defense;
+    //     const defenseDiff = player1.defense - player2.attack;
+    //     console.log(`Diferencia de ataque: ${attackDiff}`);
+    //     console.log(`Diferencia de defensa: ${defenseDiff}`);
+    //   } else {
+    //     console.log('No se han seleccionado dos jugadores');
+    //   }
+    // };
+    
+    const handleSelectPlayerA = (player) => {
+      if (!firstClickPlayer) {
+        setFirstClickPlayer(player);
+        console.log('Primer jugador seleccionado');
+      } else if (!secondClickPlayer) {
+        setSecondClickPlayer(player);
+        console.log('Segundo jugador seleccionado');
+      } else {
+        console.log('Ya se han seleccionado dos jugadores');
+      }
+    };
+    
+    const handleSelectPlayerD = (player) => {
+      if (!firstClickPlayer) {
+        console.log('Selecciona primero el jugador A');
+      } else if (!secondClickPlayer) {
+        setSecondClickPlayer(player);
+        console.log('Segundo jugador seleccionado');
+      } else {
+        console.log('Ya se han seleccionado dos jugadores');
+      }
+    };
+      
+      
+      
   
     useEffect(() => {
       Jugadores.forEach((player) => {
@@ -55,33 +110,35 @@ const Player = ({ player, onSelectPlayer }) => {
       });
     }, []);
   
-
     return (
-        <div key={player.id} onClick={handlePlayerClick}>
-            <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
-                <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
-                    <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
-                    <div className='datosCard' style={{ textAlign: 'center' }}>
-                        <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
-                        <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}></div>
-                        <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
-                        <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
-                    </div>
-                    <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
-                </div>
+      <div key={player.id} onClick={() => handlePlayerClick(player)}>
+        <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
+          <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
+            <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
+            <div className='datosCard' style={{ textAlign: 'center' }}>
+              <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
+              <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}></div>
+              <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
+              <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
             </div>
-            {showOptions && (
-                <div>
-                    <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: 6, marginTop: 88, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
-                    <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 64, marginTop: 88, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
-                </div>
-            )}
+            <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
+          </div>
         </div>
-    );
-};
-const PlayerList = (player) => {
+        {showOptions && (
+          <div>
+            <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: 6, marginTop: 88, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
+            <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 64, marginTop: 88, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
+            <button onClick={comparePlayers}>Comparar jugadores</button>
 
+          </div>
+        )}
+      </div>
+      
+    );
+  };
+  
+const PlayerList = (player) => {
     // Jugadores
 
     const playerIdToShow = 17226; // ID del jugador que quieres mostrar
@@ -140,14 +197,35 @@ const PlayerList = (player) => {
 
     };
 
-    const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
     const [showOptions, setShowOptions] = useState(false);
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [selectedPlayers, setSelectedPlayers] = useState([]);
 
+    const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
+    const [firstClickPlayer, setFirstClickPlayer] = useState(null);
+    const [secondClickPlayer, setSecondClickPlayer] = useState(null);
+  
     const handlePlayerClick = (player) => {
-        setShowOptions(true);
-        setSelectedPlayerAttack(player.attack);
-        setSelectedPlayerDefense(player.defense);
+      if (selectedPlayers.length < 2) {
+        setSelectedPlayers([...selectedPlayers, player]);
+      }
     };
+    
+
+    
+    const comparePlayers = () => {
+      if (selectedPlayers.length === 2) {
+        const player1 = selectedPlayers[0];
+        const player2 = selectedPlayers[1];
+        const attackDiff = player1.attack - player2.defense;
+        const defenseDiff = player1.defense - player2.attack;
+        console.log(`Diferencia de ataque: ${attackDiff}`);
+        console.log(`Diferencia de defensa: ${defenseDiff}`);
+      } else {
+        console.log('No se han seleccionado dos jugadores');
+      }
+    };
+    
 
 
     useEffect(() => {
@@ -209,16 +287,18 @@ const PlayerList = (player) => {
                 <div className="valors">
                     <h4>Ataque del jugador seleccionado: {selectedPlayerAttack}<br></br>
                         Defensa del jugador seleccionado: {selectedPlayerDefense}</h4>
+                        <button onClick={comparePlayers}>Comparar jugadores</button>
+
                 </div>
 
                 <section className="ContainerPlay">
                     <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }}>
                         <div className="j1">
-                            <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
-
+                            <Player player={playerToShow} onSelectPlayer={handlePlayerClick} />
+            
                         </div>
                         <div className="j2">
-                            <Player player={playerToShow2} onSelectPlayer={handleSelectPlayer} />
+                            <Player player={playerToShow2} onSelectPlayer={handlePlayerClick} />
 
                         </div>
                         <div className="j3">
