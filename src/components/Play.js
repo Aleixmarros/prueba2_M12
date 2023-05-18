@@ -208,8 +208,6 @@ const PlayerList = (player) => {
       }
     };
     
-
-    
     const comparePlayers = () => {
       if (selectedPlayers.length === 2) {
         const player1 = selectedPlayers[0];
@@ -223,8 +221,6 @@ const PlayerList = (player) => {
       }
     };
     
-
-
     useEffect(() => {
         let totalEquipo1 = 0;
         let totalEquipo2 = 0;
