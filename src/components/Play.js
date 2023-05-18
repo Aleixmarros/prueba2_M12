@@ -87,9 +87,6 @@ const Player = ({ player, onSelectPlayer }) => {
       }
     };
       
-      
-      
-  
     useEffect(() => {
       Jugadores.forEach((player) => {
         import(`./imgJugadores/${player.id}.png`).then((image) => {
