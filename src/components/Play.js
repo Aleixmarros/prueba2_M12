@@ -266,7 +266,7 @@ const PlayerList = (player) => {
         </div>
 
         <section className="ContainerPlay">
-          <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px'}}>
+          <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px', padding: 0}}>
 
             <div className="j1" >
             <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
