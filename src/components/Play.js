@@ -85,7 +85,6 @@ const Player = ({ player, onSelectPlayer }) => {
           <div className='datosCard' style={{ textAlign: 'center' }}>
             <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
             <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}></div>
             <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
             <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
           </div>
@@ -267,7 +266,7 @@ const PlayerList = (player) => {
         </div>
 
         <section className="ContainerPlay">
-          <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }}>
+          <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px'}}>
 
             <div className="j1" >
             <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
