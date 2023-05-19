@@ -10,102 +10,108 @@ import k1 from '../img/k1.png';
 const selectedPlayerIds = [];
 
 
+function Play() {
 
-const Player = ({ player, onSelectPlayer }) => {
-  const [images, setImages] = useState({});
-  const [showOptions, setShowOptions] = useState(false);
-  const [selectedPlayer, setSelectedPlayer] = useState({});
-  const [firstClickPlayer, setFirstClickPlayer] = useState(null);
-  const [secondClickPlayer, setSecondClickPlayer] = useState(null);
-
-  const handlePlayerClick = (playerId) => {
-    setShowOptions(true);
-    setSelectedPlayer(playerId);
-    // Verificar si el jugador ya está seleccionado
-    const index = selectedPlayerIds.indexOf(playerId);
-    if (index !== -1) {
-      // Si el jugador ya está seleccionado, lo eliminamos de la lista
-      selectedPlayerIds.splice(index, 1);
-    } else {
-      // Si el jugador no está seleccionado, lo agregamos a la lista
-      selectedPlayerIds.push(playerId);
-    }
-  };
-
-  
-  const handleSelectPlayerA = (player) => {
-    if (!firstClickPlayer) {
-      setFirstClickPlayer(player);
-      console.log('Primer jugador seleccionado');
-      setSelectedPlayer(player.attack);
-    } else if (!secondClickPlayer) {
-      setSecondClickPlayer(player);
-      console.log('Segundo jugador seleccionado');
-    } else {
-      console.log('Ya se han seleccionado dos jugadores');
-    }
-  };
-  const handleSelectPlayerD = (player) => {
-    if (!firstClickPlayer) {
-      // setFirstClickPlayer(player);
-      console.log('Selecciona primero el jugador A');
-      setSelectedPlayer(player.defense);
-    } else if (!secondClickPlayer) {
-      setSecondClickPlayer(player);
-      console.log('Segundo jugador seleccionado');
-    } else {
-      console.log('Ya se han seleccionado dos jugadores');
-    }
-  };
-  useEffect(() => {
-    Jugadores.forEach((player) => {
-      import(`./imgJugadores/${player.id}.png`).then((image) => {
-        setImages((prevState) => ({
-          ...prevState,
-          [player.id]: image.default,
-        }));
-      });
-    });
-
-    Jmaquina.forEach((player) => {
-      import(`./imgJugadores/${player.id}.png`).then((image) => {
-        setImages((prevState) => ({
-          ...prevState,
-          [player.id]: image.default,
-        }));
-      });
-    });
-  }, []);
-
-  return (
-    <div key={player.id} onClick={() => handlePlayerClick(player)}>
-      <div className='players-container' key={player.id} style={{ margin: '-41px', padding: 0 }}>
-        <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
-          <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
-          <div className='datosCard' style={{ textAlign: 'center' }}>
-            <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
-            <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
-            <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
-            <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
-          </div>
-          <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
-        </div>
-      </div>
-      {showOptions && (
-          <div>
-            <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: -10, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
-            <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 45, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
-            {/* <button onClick={comparePlayers}  style={{ marginLeft: 1, marginTop: 55, top: 0, left: 0, position: "absolute", background: 'transparent', border: 'none', fontSize: 18, fontFamily: "fantasy"}}>Comparar</button> */}
-
-          </div>
-        )}
-    </div>
-
-  );
-};
 
 const PlayerList = (player) => {
+  const Player = ({ player, onSelectPlayer }) => {
+    const [images, setImages] = useState({});
+    const [showOptions, setShowOptions] = useState(false);
+    const [selectedPlayer, setSelectedPlayer] = useState({});
+    const [firstClickPlayer, setFirstClickPlayer] = useState(null);
+    const [secondClickPlayer, setSecondClickPlayer] = useState(null);
+  
+    var handlePlayerClick = (player) => {
+      setShowOptions(true);
+      setSelectedPlayer(player);
+      // Verificar si el jugador ya está seleccionado
+      // const index = selectedPlayerIds.indexOf(playerId);
+      // if (index !== -1) {
+      //   // Si el jugador ya está seleccionado, lo eliminamos de la lista
+      //   selectedPlayerIds.splice(index, 1);
+      // } else {
+      //   // Si el jugador no está seleccionado, lo agregamos a la lista
+      //   selectedPlayerIds.push(playerId);
+      // }
+    };
+  
+  
+    
+    const handleSelectPlayerA = (player) => {
+      onSelectPlayer(player.attack);
 
+      if (!firstClickPlayer) {
+        setFirstClickPlayer(player);
+        console.log('Primer jugador seleccionado');
+        onSelectPlayer(player.attack); // Pasa el valor de player.attack a la función onSelectPlayer
+      } else if (!secondClickPlayer) {
+        setSecondClickPlayer(player);
+        console.log('Segundo jugador seleccionado');
+      } else {
+        console.log('Ya se han seleccionado dos jugadores');
+      }
+    };
+    
+    const handleSelectPlayerD = (player) => {
+      if (!firstClickPlayer) {
+        //  setSecondClickPlayer(player);
+        console.log('Selecciona primero el jugador A');
+        setSelectedPlayer(player.defense);
+      } else if (!secondClickPlayer) {
+        setSecondClickPlayer(player);
+        console.log('Segundo jugador seleccionado');
+      } else {
+        console.log('Ya se han seleccionado dos jugadores');
+      }
+    };
+    useEffect(() => {
+      Jugadores.forEach((player) => {
+        import(`./imgJugadores/${player.id}.png`).then((image) => {
+          setImages((prevState) => ({
+            ...prevState,
+            [player.id]: image.default,
+          }));
+        });
+      });
+  
+      Jmaquina.forEach((player) => {
+        import(`./imgJugadores/${player.id}.png`).then((image) => {
+          setImages((prevState) => ({
+            ...prevState,
+            [player.id]: image.default,
+          }));
+        });
+      });
+    }, []);
+  
+   
+  
+    return (
+      <div key={player.id} onClick={() => handlePlayerClick(player)}>
+        <div className='players-container' key={player.id} style={{ margin: '-41px', padding: 0 }}>
+          <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
+            <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
+            <div className='datosCard' style={{ textAlign: 'center' }}>
+              <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
+              <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
+              <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
+              <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
+            </div>
+            <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
+          </div>
+        </div>
+        {showOptions && (
+            <div>
+              <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: -10, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
+              <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 45, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
+              {/* <button onClick={comparePlayers}  style={{ marginLeft: 1, marginTop: 55, top: 0, left: 0, position: "absolute", background: 'transparent', border: 'none', fontSize: 18, fontFamily: "fantasy"}}>Comparar</button> */}
+  
+            </div>
+          )}
+      </div>
+  
+    );
+  };
   // Jugadores
   const playerIdToShow = 17226; // ID del jugador que quieres mostrar
   const playerToShow = Jugadores.find(player => player.id === playerIdToShow);
@@ -179,18 +185,19 @@ const PlayerList = (player) => {
 
 
 
-
   const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(0);
   const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(0);
-  
+  console.log(player);
+
+
 
   // Nuevo estado para la defensa de Jmaquina
   const handleSelectPlayer = (player) => {
     setSelectedPlayerAttack(player.attack);
-    setSelectedPlayerDefense(player.defense);
+    setSelectedPlayerDefense(player.defense); // Actualiza el estado de selectedPlayerAttack con el valor de attack
   };
-  console.log(selectedPlayerAttack);
-  console.log(selectedPlayerDefense);
+  console.log(setSelectedPlayerAttack);
+  console.log(setSelectedPlayerDefense);
   const compareAttackDefense = () => {
     if (selectedPlayerAttack > selectedPlayerDefense) {
       console.log("El ataque es mayor que la defensa");
@@ -236,133 +243,135 @@ const PlayerList = (player) => {
   }, []);
   
 
-  return (
-    <div className="wrapper">
-      <article>
-        <div className="team-container">
-          <div className="team1">
-            <div className="team1-content">
-              <h1>K1LLERS TEAM <img src={k1} style={{ width: "10vh" }} alt="k1" /></h1>
-              <h4>Media de ratings K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</h4>
-              <h4>Precio total equipo K1LLERS TEAM: {typeof teamPrices.equipo1 === 'number' ? teamPrices.equipo1.toLocaleString() : teamPrices.equipo1}€</h4>
-            </div>
-          </div>
-          <div className="team2">
-            <div className="team2-content">
-              <h1>PEPE FC <img src={pepe} style={{ width: "10vh" }} alt="pepe" /></h1>
-              <h4>Media de ratings PEPE FC: {teamRatings.equipo2.toFixed(2)}</h4>
-              <h4>Precio total equipo PEPE FC: {typeof teamPrices.equipo2 === 'number' ? teamPrices.equipo2.toLocaleString() : teamPrices.equipo2}€</h4>
-            </div>
+return (
+  <div className="wrapper">
+    <article>
+      <div className="team-container">
+        <div className="team1">
+          <div className="team1-content">
+            <h1>K1LLERS TEAM <img src={k1} style={{ width: "10vh" }} alt="k1" /></h1>
+            <h4>Media de ratings K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</h4>
+            <h4>Precio total equipo K1LLERS TEAM: {typeof teamPrices.equipo1 === 'number' ? teamPrices.equipo1.toLocaleString() : teamPrices.equipo1}€</h4>
           </div>
         </div>
-        <div className="valors">
-          <h4>Ataque del jugador seleccionado: {selectedPlayerAttack}<br></br>
-            Defensa del jugador seleccionado: {selectedPlayerDefense}</h4>
-            <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button>
-
-
-          {/* <button onClick={comparePlayers}>Comparar jugadores</button> */}
-
-        </div>
-
-        <section className="ContainerPlay">
-          <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px', padding: 0}}>
-
-            <div className="j1" >
-            <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-
-            <div className="j2">
-              <Player player={playerToShow2} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j3">
-              <Player player={playerToShow3} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j4">
-              <Player player={playerToShow4} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j5">
-              <Player player={playerToShow5} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j6">
-              <Player player={playerToShow6} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j7">
-              <Player player={playerToShow7} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j8">
-              <Player player={playerToShow8} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j9">
-              <Player player={playerToShow9} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j10">
-              <Player player={playerToShow10} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j11">
-              <Player player={playerToShow11} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-
-            <div className="j21">
-              <Player player={playerToShow21} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j22">
-              <Player player={playerToShow22} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j23">
-              <Player player={playerToShow23} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j24">
-              <Player player={playerToShow24} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j25">
-              <Player player={playerToShow25} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j26">
-              <Player player={playerToShow26} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j27">
-              <Player player={playerToShow27} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j28">
-              <Player player={playerToShow28} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j29">
-              <Player player={playerToShow29} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j210">
-              <Player player={playerToShow210} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
-            <div className="j211">
-              <Player player={playerToShow211} onSelectPlayer={handleSelectPlayer} />
-
-            </div>
+        <div className="team2">
+          <div className="team2-content">
+            <h1>PEPE FC <img src={pepe} style={{ width: "10vh" }} alt="pepe" /></h1>
+            <h4>Media de ratings PEPE FC: {teamRatings.equipo2.toFixed(2)}</h4>
+            <h4>Precio total equipo PEPE FC: {typeof teamPrices.equipo2 === 'number' ? teamPrices.equipo2.toLocaleString() : teamPrices.equipo2}€</h4>
           </div>
-        </section>
-      </article>
-    </div>
-  );
+        </div>
+      </div>
+      <div className="valors">
+        <h4>Ataque del jugador seleccionado: {setSelectedPlayerAttack}<br></br>
+          Defensa del jugador seleccionado: {setSelectedPlayerAttack}</h4>
+          <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button>
+
+
+        {/* <button onClick={comparePlayers}>Comparar jugadores</button> */}
+
+      </div>
+
+      <section className="ContainerPlay">
+        <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px', padding: 0}}>
+
+          <div className="j1" >
+          <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+
+          <div className="j2">
+            <Player player={playerToShow2} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j3">
+            <Player player={playerToShow3} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j4">
+            <Player player={playerToShow4} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j5">
+            <Player player={playerToShow5} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j6">
+            <Player player={playerToShow6} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j7">
+            <Player player={playerToShow7} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j8">
+            <Player player={playerToShow8} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j9">
+            <Player player={playerToShow9} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j10">
+            <Player player={playerToShow10} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j11">
+            <Player player={playerToShow11} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+
+          <div className="j21">
+            <Player player={playerToShow21} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j22">
+            <Player player={playerToShow22} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j23">
+            <Player player={playerToShow23} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j24">
+            <Player player={playerToShow24} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j25">
+            <Player player={playerToShow25} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j26">
+            <Player player={playerToShow26} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j27">
+            <Player player={playerToShow27} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j28">
+            <Player player={playerToShow28} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j29">
+            <Player player={playerToShow29} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j210">
+            <Player player={playerToShow210} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+          <div className="j211">
+            <Player player={playerToShow211} onSelectPlayer={handleSelectPlayer} />
+
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+);
 };
+return (PlayerList());
+}
 
-export default PlayerList;
+export default Play;
