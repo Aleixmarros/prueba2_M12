@@ -54,3 +54,18 @@ body{
     margin-bottom: 20px;
     padding: 10px;
   }
+
+  .center-row {
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    display: flex;
+  }
+
+  .fotos2{
+    height: 18vh;
+    margin: 2vh;
+    width: 18vh;
+    border-radius: 30%;
+  }
+  

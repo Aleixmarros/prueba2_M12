@@ -28,7 +28,7 @@ const huecos = [
     { id: "2", posicion: "DC", orden: 3, uniqueId: "2" },
     { id: "3", posicion: "ED", orden: 4, uniqueId: "3" },
     { id: "4", posicion: "MC", orden: 5, uniqueId: "4" },
-    { id: "5", posicion: "MC", orden: 6, uniqueId: "5"},
+    { id: "5", posicion: "MC", orden: 6, uniqueId: "5" },
     { id: "6", posicion: "MC ", orden: 7, uniqueId: "6" },
     { id: "7", posicion: "LI ", orden: 8, uniqueId: "7" },
     { id: "8", posicion: "DFC ", orden: 9, uniqueId: "8" },
@@ -48,7 +48,7 @@ const MyTeam = () => {
     const [jugadoresOrdenados, setJugadoresOrdenados] = useState([]);
     const [imageSrc, setImageSrc] = useState('17226');
     const [selectedPlayer, setSelectedPlayer] = useState(null);
-    
+
 
 
     const [images, setImages] = useState({});
@@ -141,14 +141,14 @@ const MyTeam = () => {
                                             <img src={fcard} key={posicion.id}
                                                 className={`${posicion.posicion}`}
                                                 style={{ height: '250px', zIndex: -20, marginLeft: '-60px', marginBottom: '-40px', marginRight: '-60px', marginTop: '-20px' }} />
-                                                
+
 
                                             {/* {player ?  ( */}
                                             {posicion.jugador ? (
-                                            <div className="futbolista">
-                                                <img className="futbolista__img" src={posicion.imagen} alt={posicion.jugador.nombre} />
-                                                <div className="futbolista__nombre">{posicion.jugador.nombre}</div>
-                                            </div>
+                                                <div className="futbolista">
+                                                    <img className="futbolista__img" src={posicion.imagen} alt={posicion.jugador.nombre} />
+                                                    <div className="futbolista__nombre">{posicion.jugador.nombre}</div>
+                                                </div>
                                                 // <img src={images[player.id]} />
                                             ) : (
                                                 // <div className="placeholder">{posicion}</div>
@@ -162,32 +162,47 @@ const MyTeam = () => {
                         </div>
 
 
-                        <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }} >
-                            <div className='JimgM' >
+                        <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }}>
+                            <div className='JimgM'>
                                 {Jugadores.map((player, index) => (
-                                    <div className='players-container' key={player.id} style={{ margin: '-41px' }} 
-                                    draggable={true}
-                                            onDragStart={(event) => handleDragStart(event, player.id)}
-                                            onDragEnd={handleDragEnd} >
-                                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}
-                                            draggable={true}
-                                            onDragStart={(event) => handleDragStart(event, player.id)}
-                                            onDragEnd={handleDragEnd} >
-                                            <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
+                                    <div
+                                        className='players-container'
+                                        key={player.id}
+                                        style={{ margin: '-41px' }}
+                                    >
+                                        <div
+                                            className='JimgM'
+                                            style={{ position: 'relative', textAlign: 'center' }}
+                                        >
+                                            <img
+                                                src={fcard}
+                                                alt="card"
+                                                className='Jimg'
+                                                style={{ height: 250 }}
+                                                draggable={true}
+                                                onDragStart={(event) => handleDragStart(event, player.id)}
+                                                onDragEnd={handleDragEnd}
+                                            />
                                             <div className='datosCard' style={{ textAlign: 'center' }}>
                                                 <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
                                                 <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
                                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}>
+                                                    {/* Aquí puedes agregar cualquier otro contenido adicional */}
                                                 </div>
                                                 <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
                                                 <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
                                             </div>
-                                            <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" onDragStart={(event) => handleDragStart(event, player.imagen)} draggable={true} onDragEnd={handleDragEnd} />
+                                            <img
+                                                src={images[player.id]}
+                                                style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }}
+                                                alt="Imagen del jugador"
+                                            />
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
+
                     </section>
                 </article>
             </div>
