@@ -63,8 +63,8 @@ const Profile = () => {
     return (
       <form className='form' >
         <div className="container text-center justify-content-center">
-          <h3>Profile</h3><br></br>
-          <div className="mb-3">
+        <h2 className="titulo2">Profile</h2><br></br>
+          <div className="mb-1">
           <input
               type="file"
               id="avatar-input"
@@ -78,19 +78,20 @@ const Profile = () => {
             </label>
             <label>Ejemplo Username</label>
           </div>
-          <div className="mb-3">
+          <div className="mb-1">
             <label style={{ marginRight: "10px" }}>Email:</label>
             <label>Email@gmail.com</label>
-          </div>
-          <div className="mb-3">
+          </div><br></br>
+          <div className="mb-1">
   
-          <p><img src={k1} style={{ width: "6vh",marginRight: "10px", borderRadius: "50%" }} alt="k1" />  K1LLERS TEAM  </p>
+          <label><img src={k1} style={{ width: "6vh",marginRight: "10px", borderRadius: "50%" }} alt="k1" />  K1LLERS TEAM  </label><br></br>
 
-            <label>Media de K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</label><br></br><br></br>
+            <label>Media de K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</label><br></br>
             <label>Precio total K1LLERS TEAM: {typeof teamPrices.equipo1 === 'number' ? teamPrices.equipo1.toLocaleString() : teamPrices.equipo1}€</label>
 
 
           </div>
+          
           <p className="forgot-password text-right">
           Change <a href="/profile2">password?</a>
         </p>
