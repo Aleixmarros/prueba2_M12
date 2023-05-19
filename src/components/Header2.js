@@ -47,9 +47,9 @@ function OffcanvasExample() {
                                            <h2 className="hovertown titulo titulo2 d-block d-sm-block d-md-block d-xl-block d-xxl-none">{titulo}</h2>
                                             <Nav.Link href="/Home" className="text-white">Home</Nav.Link>
                                             <Nav.Link href="/Play" className="text-white">Play</Nav.Link>
-                                            <Nav.Link href="/Classification" className="text-white">Classification</Nav.Link>
+                                            {/* <Nav.Link href="/Classification" className="text-white">Classification</Nav.Link> */}
                                             <Nav.Link href="/Players" className="text-white">Players</Nav.Link>
-                                            <Nav.Link href="/Teams" className="text-white">Teams</Nav.Link>
+                                            {/* <Nav.Link href="/Teams" className="text-white">Teams</Nav.Link> */}
                                             <Nav.Link href="/MyTeam" className="text-white">My Team</Nav.Link>
                                             <Nav.Link href="/Profile" className="text-white">Profile</Nav.Link>
                                             <Nav.Link href="/AboutUs" className="text-white">About Us</Nav.Link>
