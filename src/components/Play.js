@@ -14,12 +14,7 @@ const selectedPlayerIds = [];
 const Player = ({ player, onSelectPlayer }) => {
   const [images, setImages] = useState({});
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedPlayer, setSelectedPlayer] = useState({
-    attack: 0,
-    defense: 0,
-    firstClickPlayer: null,
-    secondClickPlayer: null,
-  });
+  const [selectedPlayer, setSelectedPlayer] = useState({});
   const [firstClickPlayer, setFirstClickPlayer] = useState(null);
   const [secondClickPlayer, setSecondClickPlayer] = useState(null);
 
@@ -37,18 +32,7 @@ const Player = ({ player, onSelectPlayer }) => {
     }
   };
 
-  const comparePlayers = () => {
-    if (selectedPlayerIds.length === 2) {
-      const player1 = selectedPlayerIds[0];
-      const player2 = selectedPlayerIds[1];
-      const attackDiff = player1.attack - player2.defense;
-      const defenseDiff = player1.defense - player2.attack;
-      console.log(`Diferencia de ataque: ${attackDiff}`);
-      console.log(`Diferencia de defensa: ${defenseDiff}`);
-    } else {
-      console.log('No se han seleccionado dos jugadores');
-    }
-  };
+  
   const handleSelectPlayerA = (player) => {
     if (!firstClickPlayer) {
       setFirstClickPlayer(player);
@@ -112,7 +96,7 @@ const Player = ({ player, onSelectPlayer }) => {
           <div>
             <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: -10, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
             <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 45, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
-            <button onClick={comparePlayers}  style={{ marginLeft: 1, marginTop: 55, top: 0, left: 0, position: "absolute", background: 'transparent', border: 'none', fontSize: 18, fontFamily: "fantasy"}}>Comparar</button>
+            {/* <button onClick={comparePlayers}  style={{ marginLeft: 1, marginTop: 55, top: 0, left: 0, position: "absolute", background: 'transparent', border: 'none', fontSize: 18, fontFamily: "fantasy"}}>Comparar</button> */}
 
           </div>
         )}
@@ -199,13 +183,28 @@ const PlayerList = (player) => {
 
   const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(0);
   const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(0);
+  
 
   // Nuevo estado para la defensa de Jmaquina
-  const handleSelectPlayer = (attack, defense) => {
-    setSelectedPlayerAttack(attack);
-    setSelectedPlayerDefense(defense);
-
+  const handleSelectPlayer = (player) => {
+    setSelectedPlayerAttack(player.attack);
+    setSelectedPlayerDefense(player.defense);
   };
+  console.log(selectedPlayerAttack);
+  console.log(selectedPlayerDefense);
+  const compareAttackDefense = () => {
+    if (selectedPlayerAttack > selectedPlayerDefense) {
+      console.log("El ataque es mayor que la defensa");
+      // Realiza alguna acción cuando el ataque sea mayor que la defensa
+    } else if (selectedPlayerAttack < selectedPlayerDefense) {
+      console.log("La defensa es mayor que el ataque");
+      // Realiza alguna acción cuando la defensa sea mayor que el ataque
+    } else {
+      console.log("El ataque y la defensa son iguales");
+      // Realiza alguna acción cuando el ataque y la defensa sean iguales
+    }
+  };
+  
 
   const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
   const [teamRatings, setTeamRatings] = useState({ equipo1: 0, equipo2: 0 });
@@ -260,6 +259,9 @@ const PlayerList = (player) => {
         <div className="valors">
           <h4>Ataque del jugador seleccionado: {selectedPlayerAttack}<br></br>
             Defensa del jugador seleccionado: {selectedPlayerDefense}</h4>
+            <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button>
+
+
           {/* <button onClick={comparePlayers}>Comparar jugadores</button> */}
 
         </div>
@@ -268,7 +270,8 @@ const PlayerList = (player) => {
           <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' }}>
 
             <div className="j1" >
-              <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
+
             </div>
 
             <div className="j2">
