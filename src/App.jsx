@@ -14,6 +14,7 @@ import Header from './components/Header';
 import Header2 from './components/Header2';
 import MyTeam from './components/MyTeam';
 import MyTeam2 from './components/MyTeam2';
+import Player from './components/player';
 
 import selT from './components/seleccionar-torneo';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -52,6 +53,9 @@ const App = () => {
                         <Link className="nav-link" to={'/AboutUs'}>
                           {/* About Us */}
                         </Link>
+                        <Link className="nav-link" to={'/Player'}>
+                          {/* About Us */}
+                        </Link>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
@@ -66,6 +70,8 @@ const App = () => {
           <Route path="/Login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/AboutUS" element={<AboutUs />} />
+          <Route path="/Player" element={<Player />} />
+
           <Route path="/seleccionar-torneo" element={<selT />} />
           
         </Routes>

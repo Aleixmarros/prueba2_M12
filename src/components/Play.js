@@ -12,58 +12,19 @@ const selectedPlayerIds = [];
 
 function Play() {
 
-
-const PlayerList = (player) => {
-  const Player = ({ player, onSelectPlayer }) => {
+  const Player = ({ player, handleSelectPlayer }) => {
     const [images, setImages] = useState({});
     const [showOptions, setShowOptions] = useState(false);
-    const [selectedPlayer, setSelectedPlayer] = useState({});
-    const [firstClickPlayer, setFirstClickPlayer] = useState(null);
-    const [secondClickPlayer, setSecondClickPlayer] = useState(null);
   
-    var handlePlayerClick = (player) => {
+    const PlayerList = (player, attackValue, defenseValue) => {
+      console.log(attackValue);
+      console.log(defenseValue);
+      
+    };
+    const handlePlayerClick = () => {
       setShowOptions(true);
-      setSelectedPlayer(player);
-      // Verificar si el jugador ya está seleccionado
-      // const index = selectedPlayerIds.indexOf(playerId);
-      // if (index !== -1) {
-      //   // Si el jugador ya está seleccionado, lo eliminamos de la lista
-      //   selectedPlayerIds.splice(index, 1);
-      // } else {
-      //   // Si el jugador no está seleccionado, lo agregamos a la lista
-      //   selectedPlayerIds.push(playerId);
-      // }
     };
-  
-  
-    
-    const handleSelectPlayerA = (player) => {
-      onSelectPlayer(player.attack);
 
-      if (!firstClickPlayer) {
-        setFirstClickPlayer(player);
-        console.log('Primer jugador seleccionado');
-        onSelectPlayer(player.attack); // Pasa el valor de player.attack a la función onSelectPlayer
-      } else if (!secondClickPlayer) {
-        setSecondClickPlayer(player);
-        console.log('Segundo jugador seleccionado');
-      } else {
-        console.log('Ya se han seleccionado dos jugadores');
-      }
-    };
-    
-    const handleSelectPlayerD = (player) => {
-      if (!firstClickPlayer) {
-        //  setSecondClickPlayer(player);
-        console.log('Selecciona primero el jugador A');
-        setSelectedPlayer(player.defense);
-      } else if (!secondClickPlayer) {
-        setSecondClickPlayer(player);
-        console.log('Segundo jugador seleccionado');
-      } else {
-        console.log('Ya se han seleccionado dos jugadores');
-      }
-    };
     useEffect(() => {
       Jugadores.forEach((player) => {
         import(`./imgJugadores/${player.id}.png`).then((image) => {
@@ -102,8 +63,8 @@ const PlayerList = (player) => {
         </div>
         {showOptions && (
             <div>
-              <button onClick={() => handleSelectPlayerA(player)} style={{ position: "absolute", color: 'red' , marginLeft: -10, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
-              <button onClick={() => handleSelectPlayerD(player)} style={{  position: "absolute", color: 'green' , marginLeft: 45, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
+              <button onClick={() => handleSelectPlayer(player, "attack")} style={{ position: "absolute", color: 'red' , marginLeft: -10, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.attack}</button>
+              <button onClick={() => handleSelectPlayer(player, "defense")} style={{  position: "absolute", color: 'green' , marginLeft: 45, marginTop: 68, top: 0, left: 0, fontSize: 40, background: 'transparent', border: 'none', fontFamily: "fantasy"}}>{player.defense}</button>
               {/* <button onClick={comparePlayers}  style={{ marginLeft: 1, marginTop: 55, top: 0, left: 0, position: "absolute", background: 'transparent', border: 'none', fontSize: 18, fontFamily: "fantasy"}}>Comparar</button> */}
   
             </div>
@@ -112,102 +73,94 @@ const PlayerList = (player) => {
   
     );
   };
+
+
+const PlayerList = (player) => {
   // Jugadores
   const playerIdToShow = 17226; // ID del jugador que quieres mostrar
   const playerToShow = Jugadores.find(player => player.id === playerIdToShow);
-  selectedPlayerIds.push(playerToShow);
   const playerIdToShow2 = 4251; // ID del jugador que quieres mostrar
   const playerToShow2 = Jugadores.find(player => player.id === playerIdToShow2);
-  selectedPlayerIds.push(playerToShow2);
   const playerIdToShow3 = 7592; // ID del jugador que quieres mostrar
   const playerToShow3 = Jugadores.find(player => player.id === playerIdToShow3);
-  selectedPlayerIds.push(playerToShow3);
   const playerIdToShow4 = 17134; // ID del jugador que quieres mostrar
   const playerToShow4 = Jugadores.find(player => player.id === playerIdToShow4);
-  selectedPlayerIds.push(playerToShow4);
   const playerIdToShow5 = 7555; // ID del jugador que quieres mostrar
   const playerToShow5 = Jugadores.find(player => player.id === playerIdToShow5);
-  selectedPlayerIds.push(playerToShow5);
   const playerIdToShow6 = 16242; // ID del jugador que quieres mostrar
   const playerToShow6 = Jugadores.find(player => player.id === playerIdToShow6);
-  selectedPlayerIds.push(playerToShow6);
   const playerIdToShow7 = 17230; // ID del jugador que quieres mostrar
   const playerToShow7 = Jugadores.find(player => player.id === playerIdToShow7);
-  selectedPlayerIds.push(playerToShow7);
   const playerIdToShow8 = 17232; // ID del jugador que quieres mostrar
   const playerToShow8 = Jugadores.find(player => player.id === playerIdToShow8);
-  selectedPlayerIds.push(playerToShow8);
   const playerIdToShow9 = 4380; // ID del jugador que quieres mostrar
   const playerToShow9 = Jugadores.find(player => player.id === playerIdToShow9);
-  selectedPlayerIds.push(playerToShow9);
   const playerIdToShow10 = 10117; // ID del jugador que quieres mostrar
   const playerToShow10 = Jugadores.find(player => player.id === playerIdToShow10);
-  selectedPlayerIds.push(playerToShow10);
   const playerIdToShow11 = 3978; // ID del jugador que quieres mostrar
   const playerToShow11 = Jugadores.find(player => player.id === playerIdToShow11);
-  selectedPlayerIds.push(playerToShow11);
 
   // JMaquinas
 
   const playerIdToShow21 = 16485; // ID del jugador que quieres mostrar
   const playerToShow21 = Jmaquina.find(player => player.id === playerIdToShow21);
-  selectedPlayerIds.push(playerToShow21);
   const playerIdToShow22 = 3920; // ID del jugador que quieres mostrar
   const playerToShow22 = Jmaquina.find(player => player.id === playerIdToShow22);
-  selectedPlayerIds.push(playerToShow22);
   const playerIdToShow23 = 4048; // ID del jugador que quieres mostrar
   const playerToShow23 = Jmaquina.find(player => player.id === playerIdToShow23);
-  selectedPlayerIds.push(playerToShow23);
   const playerIdToShow24 = 17806; // ID del jugador que quieres mostrar
   const playerToShow24 = Jmaquina.find(player => player.id === playerIdToShow24);
-  selectedPlayerIds.push(playerToShow24);
   const playerIdToShow25 = 2740; // ID del jugador que quieres mostrar
   const playerToShow25 = Jmaquina.find(player => player.id === playerIdToShow25);
-  selectedPlayerIds.push(playerToShow25);
   const playerIdToShow26 = 4141; // ID del jugador que quieres mostrar
   const playerToShow26 = Jmaquina.find(player => player.id === playerIdToShow26);
-  selectedPlayerIds.push(playerToShow26);
   const playerIdToShow27 = 16540; // ID del jugador que quieres mostrar
   const playerToShow27 = Jmaquina.find(player => player.id === playerIdToShow27);
-  selectedPlayerIds.push(playerToShow27);
   const playerIdToShow28 = 2707; // ID del jugador que quieres mostrar
   const playerToShow28 = Jmaquina.find(player => player.id === playerIdToShow28);
-  selectedPlayerIds.push(playerToShow28);
   const playerIdToShow29 = 17223; // ID del jugador que quieres mostrar
   const playerToShow29 = Jmaquina.find(player => player.id === playerIdToShow29);
-  selectedPlayerIds.push(playerToShow29);
   const playerIdToShow210 = 4379; // ID del jugador que quieres mostrar
   const playerToShow210 = Jmaquina.find(player => player.id === playerIdToShow210);
-  selectedPlayerIds.push(playerToShow210);
   const playerIdToShow211 = 3918; // ID del jugador que quieres mostrar
   const playerToShow211 = Jmaquina.find(player => player.id === playerIdToShow211);
-  selectedPlayerIds.push(playerToShow211);
+
+  const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(null);
+  const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(null);
+
+  const [selectedPlayer1, setSelectedPlayer1] = useState(null);
+  const [selectedPlayer2, setSelectedPlayer2] = useState(null);
+  
+  const [result, setResult] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
 
 
 
-  const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(0);
-  const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(0);
-  console.log(player);
-
-
-
-  // Nuevo estado para la defensa de Jmaquina
-  const handleSelectPlayer = (player) => {
-    setSelectedPlayerAttack(player.attack);
-    setSelectedPlayerDefense(player.defense); // Actualiza el estado de selectedPlayerAttack con el valor de attack
+  const handleSelectPlayer = (player, valueType) => {
+    if (valueType === "attack") {
+      setSelectedPlayerAttack(player);
+      setSelectedValue(`Ataque: ${player.attack}`);
+    } else if (valueType === "defense") {
+      setSelectedPlayerDefense(player);
+      setSelectedValue(`Defensa: ${player.defense}`);
+    }
+  
+    if (selectedPlayerAttack && selectedPlayerDefense) {
+      comparisonResult();
+    }
   };
-  console.log(setSelectedPlayerAttack);
-  console.log(setSelectedPlayerDefense);
-  const compareAttackDefense = () => {
-    if (selectedPlayerAttack > selectedPlayerDefense) {
-      console.log("El ataque es mayor que la defensa");
-      // Realiza alguna acción cuando el ataque sea mayor que la defensa
-    } else if (selectedPlayerAttack < selectedPlayerDefense) {
-      console.log("La defensa es mayor que el ataque");
-      // Realiza alguna acción cuando la defensa sea mayor que el ataque
-    } else {
-      console.log("El ataque y la defensa son iguales");
-      // Realiza alguna acción cuando el ataque y la defensa sean iguales
+
+  const comparisonResult = () => {
+    if (selectedPlayerAttack && selectedPlayerDefense) {
+      let result = "";
+      if (selectedPlayerAttack.attack > selectedPlayerDefense.defense) {
+        result = `${selectedPlayerAttack.name} ha ganado`;
+      } else if (selectedPlayerAttack.attack < selectedPlayerDefense.defense) {
+        result = `${selectedPlayerDefense.name} ha ganado`;
+      } else {
+        result = "El ataque y la defensa son iguales";
+      }
+      setResult(result);
     }
   };
   
@@ -263,9 +216,10 @@ return (
         </div>
       </div>
       <div className="valors">
-        <h4>Ataque del jugador seleccionado: {setSelectedPlayerAttack}<br></br>
-          Defensa del jugador seleccionado: {setSelectedPlayerAttack}</h4>
-          <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button>
+        <h4>El Valor del 1r jugador es: {selectedValue}<br></br>
+        El Valor del 2º jugador es: {selectedValue}</h4>
+        <h3>{result}</h3>
+          {/* <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button> */}
 
 
         {/* <button onClick={comparePlayers}>Comparar jugadores</button> */}
@@ -276,93 +230,93 @@ return (
         <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px', padding: 0}}>
 
           <div className="j1" >
-          <Player player={playerToShow} onSelectPlayer={handleSelectPlayer} />
+          <Player player={playerToShow} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
 
           <div className="j2">
-            <Player player={playerToShow2} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow2} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j3">
-            <Player player={playerToShow3} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow3} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j4">
-            <Player player={playerToShow4} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow4} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j5">
-            <Player player={playerToShow5} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow5} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j6">
-            <Player player={playerToShow6} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow6} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j7">
-            <Player player={playerToShow7} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow7} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j8">
-            <Player player={playerToShow8} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow8} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j9">
-            <Player player={playerToShow9} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow9} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j10">
-            <Player player={playerToShow10} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow10} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j11">
-            <Player player={playerToShow11} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow11} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
 
           <div className="j21">
-            <Player player={playerToShow21} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow21} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j22">
-            <Player player={playerToShow22} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow22} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j23">
-            <Player player={playerToShow23} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow23} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j24">
-            <Player player={playerToShow24} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow24} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j25">
-            <Player player={playerToShow25} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow25} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j26">
-            <Player player={playerToShow26} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow26} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j27">
-            <Player player={playerToShow27} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow27} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j28">
-            <Player player={playerToShow28} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow28} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j29">
-            <Player player={playerToShow29} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow29} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j210">
-            <Player player={playerToShow210} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow210} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j211">
-            <Player player={playerToShow211} onSelectPlayer={handleSelectPlayer} />
+            <Player player={playerToShow211} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
         </div>
