@@ -47,6 +47,11 @@
     padding-bottom: -10vh;
   }
 
+  .valors h3{
+    margin-top: 10vh;
+    margin-left: -29vh;
+  }
+
   .team-container {
     display: flex;
     justify-content: space-between;
