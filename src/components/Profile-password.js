@@ -24,7 +24,7 @@ export default class Profile extends Component {
     return (
       <form className='form' >
         <div className="container text-center justify-content-center">
-          <h3>Change Password</h3><br></br>
+        <h2 className="titulo2">Change Password</h2><br></br>
           
           
           <p className="forgot-password text-right">Old password</p>
