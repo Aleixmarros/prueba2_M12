@@ -7,8 +7,6 @@ import fcard from './imgJugadores/1.png';
 import pepe from '../img/pepe.png';
 import k1 from '../img/k1.png';
 
-const selectedPlayerIds = [];
-
 
 function Play() {
 
@@ -16,11 +14,7 @@ function Play() {
     const [images, setImages] = useState({});
     const [showOptions, setShowOptions] = useState(false);
   
-    const PlayerList = (player, attackValue, defenseValue) => {
-      console.log(attackValue);
-      console.log(defenseValue);
-      
-    };
+
     const handlePlayerClick = () => {
       setShowOptions(true);
     };
@@ -48,7 +42,7 @@ function Play() {
    
   
     return (
-      <div key={player.id} onClick={() => handlePlayerClick(player)}>
+      <div className={`${!player.isActive ? "inactive" : ""}`}  key={player.id} onClick={() => handlePlayerClick()}>
         <div className='players-container' key={player.id} style={{ margin: '-41px', padding: 0 }}>
           <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
             <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
@@ -75,56 +69,7 @@ function Play() {
   };
 
 
-const PlayerList = (player) => {
-  // Jugadores
-  const playerIdToShow = 17226; // ID del jugador que quieres mostrar
-  const playerToShow = Jugadores.find(player => player.id === playerIdToShow);
-  const playerIdToShow2 = 4251; // ID del jugador que quieres mostrar
-  const playerToShow2 = Jugadores.find(player => player.id === playerIdToShow2);
-  const playerIdToShow3 = 7592; // ID del jugador que quieres mostrar
-  const playerToShow3 = Jugadores.find(player => player.id === playerIdToShow3);
-  const playerIdToShow4 = 17134; // ID del jugador que quieres mostrar
-  const playerToShow4 = Jugadores.find(player => player.id === playerIdToShow4);
-  const playerIdToShow5 = 7555; // ID del jugador que quieres mostrar
-  const playerToShow5 = Jugadores.find(player => player.id === playerIdToShow5);
-  const playerIdToShow6 = 16242; // ID del jugador que quieres mostrar
-  const playerToShow6 = Jugadores.find(player => player.id === playerIdToShow6);
-  const playerIdToShow7 = 17230; // ID del jugador que quieres mostrar
-  const playerToShow7 = Jugadores.find(player => player.id === playerIdToShow7);
-  const playerIdToShow8 = 17232; // ID del jugador que quieres mostrar
-  const playerToShow8 = Jugadores.find(player => player.id === playerIdToShow8);
-  const playerIdToShow9 = 4380; // ID del jugador que quieres mostrar
-  const playerToShow9 = Jugadores.find(player => player.id === playerIdToShow9);
-  const playerIdToShow10 = 10117; // ID del jugador que quieres mostrar
-  const playerToShow10 = Jugadores.find(player => player.id === playerIdToShow10);
-  const playerIdToShow11 = 3978; // ID del jugador que quieres mostrar
-  const playerToShow11 = Jugadores.find(player => player.id === playerIdToShow11);
-
-  // JMaquinas
-
-  const playerIdToShow21 = 16485; // ID del jugador que quieres mostrar
-  const playerToShow21 = Jmaquina.find(player => player.id === playerIdToShow21);
-  const playerIdToShow22 = 3920; // ID del jugador que quieres mostrar
-  const playerToShow22 = Jmaquina.find(player => player.id === playerIdToShow22);
-  const playerIdToShow23 = 4048; // ID del jugador que quieres mostrar
-  const playerToShow23 = Jmaquina.find(player => player.id === playerIdToShow23);
-  const playerIdToShow24 = 17806; // ID del jugador que quieres mostrar
-  const playerToShow24 = Jmaquina.find(player => player.id === playerIdToShow24);
-  const playerIdToShow25 = 2740; // ID del jugador que quieres mostrar
-  const playerToShow25 = Jmaquina.find(player => player.id === playerIdToShow25);
-  const playerIdToShow26 = 4141; // ID del jugador que quieres mostrar
-  const playerToShow26 = Jmaquina.find(player => player.id === playerIdToShow26);
-  const playerIdToShow27 = 16540; // ID del jugador que quieres mostrar
-  const playerToShow27 = Jmaquina.find(player => player.id === playerIdToShow27);
-  const playerIdToShow28 = 2707; // ID del jugador que quieres mostrar
-  const playerToShow28 = Jmaquina.find(player => player.id === playerIdToShow28);
-  const playerIdToShow29 = 17223; // ID del jugador que quieres mostrar
-  const playerToShow29 = Jmaquina.find(player => player.id === playerIdToShow29);
-  const playerIdToShow210 = 4379; // ID del jugador que quieres mostrar
-  const playerToShow210 = Jmaquina.find(player => player.id === playerIdToShow210);
-  const playerIdToShow211 = 3918; // ID del jugador que quieres mostrar
-  const playerToShow211 = Jmaquina.find(player => player.id === playerIdToShow211);
-
+const PlayerList = () => {
   const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(null);
   const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(null);
   
@@ -137,24 +82,30 @@ const PlayerList = (player) => {
     if (!player.isActive) {
       return;
     }
-
+  
     if (valueType === "attack") {
       setSelectedPlayerAttack(player);
       setSelectedValue(`Ataque: ${player.attack}`);
     } else if (valueType === "defense") {
       setSelectedPlayerDefense(player);
       setSelectedValue(`Defensa: ${player.defense}`);
+      player.isActive = false;
     }
-
     if (selectedPlayerAttack && selectedPlayerDefense) {
       comparisonResult();
+      player.isActive = false;
     } else {
       setResult("");
       setSelectedValue("");
     }
   };
-
+  
+  
   const comparisonResult = () => {
+    // Resto del código de la función
+
+    let comparisonDetails = "";
+
     if (selectedPlayerAttack && selectedPlayerDefense) {
       let result = "";
       let updatedPlayerAttack = { ...selectedPlayerAttack };
@@ -163,25 +114,26 @@ const PlayerList = (player) => {
       if (selectedPlayerAttack.attack > selectedPlayerDefense.defense) {
         result = `${selectedPlayerAttack.name} ha ganado`;
         updatedPlayerAttack.isActive = false;
+        comparisonDetails = `${selectedPlayerAttack.name} (${selectedPlayerAttack.attack}) > ${selectedPlayerDefense.name} (${selectedPlayerDefense.defense})`;
       } else if (selectedPlayerAttack.attack < selectedPlayerDefense.defense) {
         result = `${selectedPlayerDefense.name} ha ganado`;
         updatedPlayerDefense.isActive = false;
+        comparisonDetails = `${selectedPlayerAttack.name} (${selectedPlayerAttack.attack}) < ${selectedPlayerDefense.name} (${selectedPlayerDefense.defense})`;
       } else {
         result = "El ataque y la defensa son iguales";
+        comparisonDetails = `${selectedPlayerAttack.name} (${selectedPlayerAttack.attack}) = ${selectedPlayerDefense.name} (${selectedPlayerDefense.defense})`;
       }
 
       setResult(result);
       setSelectedPlayerAttack(updatedPlayerAttack);
       setSelectedPlayerDefense(updatedPlayerDefense);
     }
+
+    // Agregar el siguiente código para mostrar los detalles de la comparación
+    setResultDetails(comparisonDetails);
   };
 
-  console.log(selectedPlayerAttack);
-  console.log(selectedPlayerDefense);
-
-  console.log(comparisonResult);
-  console.log(setSelectedPlayerAttack);
-  console.log(setSelectedPlayerDefense);
+  const [resultDetails, setResultDetails] = useState("");
 
 
   const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
@@ -235,8 +187,9 @@ return (
         </div>
       </div>
       <div className="valors">
-        <h4>El Valor de es: {selectedValue}<br></br>
-        El Valor de es: {selectedValue}</h4>
+        <h4>El Valor de {selectedValue}<br></br>
+        El Valor de {selectedValue}</h4>
+        {resultDetails && <p style={{ position: "absolute", marginTop: '15vh' }}>Detalles: {resultDetails}</p>}
         <h3>{result}</h3>
           {/* <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button> */}
 
@@ -249,93 +202,93 @@ return (
         <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px', padding: 0}}>
 
           <div className="j1" >
-          <Player player={playerToShow} handleSelectPlayer={handleSelectPlayer} />
+          <Player player={Jugadores[0]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
 
           <div className="j2">
-            <Player player={playerToShow2} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[1]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j3">
-            <Player player={playerToShow3} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[2]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j4">
-            <Player player={playerToShow4} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[3]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j5">
-            <Player player={playerToShow5} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[4]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j6">
-            <Player player={playerToShow6} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[5]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j7">
-            <Player player={playerToShow7} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[6]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j8">
-            <Player player={playerToShow8} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[7]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j9">
-            <Player player={playerToShow9} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[8]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j10">
-            <Player player={playerToShow10} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[9]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j11">
-            <Player player={playerToShow11} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jugadores[10]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
 
           <div className="j21">
-            <Player player={playerToShow21} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[2]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j22">
-            <Player player={playerToShow22} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[9]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j23">
-            <Player player={playerToShow23} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[7]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j24">
-            <Player player={playerToShow24} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[8]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j25">
-            <Player player={playerToShow25} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[3]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j26">
-            <Player player={playerToShow26} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[4]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j27">
-            <Player player={playerToShow27} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[10]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j28">
-            <Player player={playerToShow28} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[0]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j29">
-            <Player player={playerToShow29} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[1]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j210">
-            <Player player={playerToShow210} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[5]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
           <div className="j211">
-            <Player player={playerToShow211} handleSelectPlayer={handleSelectPlayer} />
+            <Player player={Jmaquina[6]} handleSelectPlayer={handleSelectPlayer} />
 
           </div>
         </div>

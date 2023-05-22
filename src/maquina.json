@@ -27,7 +27,8 @@
         "rating": 88,
         "attack": 28,
         "defense": 89,
-        "price": 150000000
+        "price": 150000000,
+        "isActive": true
 
     },
     {
@@ -56,7 +57,8 @@
     "rating": 96,
     "attack": 94,
     "defense": 94,
-    "price": 400000000
+    "price": 400000000,
+    "isActive": true
 
     },
     {
@@ -104,7 +106,8 @@
     "rating": 92,
     "attack": 92,
     "defense": 42,
-    "price": 250000000
+    "price": 250000000,
+    "isActive": true
 
     },
     {
@@ -144,7 +147,8 @@
         "rating": 86,
         "attack": 86,
         "defense": 36,
-        "price": 130000000
+        "price": 130000000,
+        "isActive": true
     },
     {
         "id": 4141,
@@ -187,7 +191,8 @@
     "rating": 76,
     "attack": 76,
     "defense": 36,
-    "price": 40000000
+    "price": 40000000,
+    "isActive": true
     },
     {
         "id": 4379,
@@ -221,7 +226,8 @@
     "rating": 80,
     "attack": 80,
     "defense": 75,
-    "price": 85000000
+    "price": 85000000,
+    "isActive": true
     },
     {
         "id": 3918,
@@ -255,7 +261,8 @@
     "rating": 80,
     "attack": 80,
     "defense": 75,
-    "price": 85000000
+    "price": 85000000,
+    "isActive": true
     },
     {
         "id": 4048,
@@ -289,7 +296,8 @@
         "rating": 72,
         "attack": 32,
         "defense": 72,
-        "price": 5000000
+        "price": 5000000,
+        "isActive": true
     },
     { "id": 17806,
     "firstName": "Oscar",
@@ -331,7 +339,9 @@
     "rating": 87,
     "attack": 47,
     "defense": 87,
-    "price": 140000000},
+    "price": 140000000,
+    "isActive": true
+    },
     {
         "id": 3920,
         "firstName": "Yeray",
@@ -365,7 +375,8 @@
         "rating": 80,
         "attack": 20,
         "defense": 80,
-        "price": 85000000
+        "price": 85000000,
+        "isActive": true
     },
     {
         "id": 16540,
@@ -408,7 +419,8 @@
         "rating": 86,
         "attack": 26,
         "defense": 86,
-        "price": 130000000
+        "price": 130000000,
+        "isActive": true
     }
    
 ]
