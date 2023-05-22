@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 200px;
+  
 }
 
 .titulo2 {
@@ -23,10 +24,25 @@
   letter-spacing: -1px;
 }
 
+.ContainerPlay2{
+  height: 770px;
+  width: 100%;
+  background-image: url(../img/campoMyTeam.png);
+  background-size: cover;
+  /* Agregar el siguiente estilo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -6%;
+}
+
+
 .containerMyTeam {
-  width: 90%;
+  width: 0%;
   height: 50%;
-  margin-top: 6%;
+  margin-top: -5%;
+  padding-bottom: 200px;
   /* background-image: url(../img/campoMyTeam.png); */
   background-size: cover;
   /* Agregar los siguientes estilos */
@@ -34,6 +50,8 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  position: fixed;
+
 }
 
 .posicion {

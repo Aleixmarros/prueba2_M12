@@ -17,7 +17,7 @@
     background-position: center 400px; 
     color: #eee;
     width: 100%; 
-    height: 110vh; 
+    height: 100vh; 
     justify-content: center; 
     align-items: center; 
     perspective: 1000px; 
@@ -26,16 +26,12 @@
     border-radius: 1%;
   }
   
-  
   @keyframes animation {
      100%{
       background-position:0px -3000px;
     }
   }
-  .inactive {
-    background-color: black;
-    opacity: 0.5;
-  }
+
   .valors{
     display: flex;
     justify-content: space-between;
@@ -48,11 +44,6 @@
     margin-top: -15vh;
     padding: 1vh;
     padding-bottom: -10vh;
-  }
-
-  .valors h3{
-    margin-top: 10vh;
-    margin-left: -29vh;
   }
 
   .team-container {
@@ -89,84 +80,6 @@
     /* Estilos para el contenido del equipo 2 */
   }
   
-  /* MYTEAM */
-
-  /* Benzema CF 97*/
-.j1j{ 
-  position: fixed;
-  margin-top: -28vh;
-  margin-left: -5vh;
-  
-}
-/* CB 71 */
-.j2j{
-  position: fixed;
-  margin-top: 15vh;
-  margin-left: 19vh;
-  
-}
-/* RB 71 */
-.j3j{
-  position: fixed;
-  margin-top: 9vh;
-  margin-left: 64vh;
-  
-}
-/* J. Alba LB 88  */
-.j4j{
-  position: fixed;
-  margin-top: 9vh;
-  margin-left: -74vh;
-  
-}
-/* LW 79 */
-.j5j{
-  position: fixed;
-  margin-top: -28vh;
-  margin-left: -70vh;
-
-  
-}
-/* Raphinia RW 86 */
-.j6j{
-  position: fixed;
-  margin-top: -28vh;
-  margin-left: 65vh;
-  
-}
-/* Militao CB 94 */
-.j7j{
-  position: fixed;
-  margin-top: 15vh;
-  margin-left: -30vh;
-}
-/* Courtois GK 96 */
-.j8j{
-  position: fixed;
-  margin-left: -5vh;
-  margin-top: 24vh;
-}
-/* CM 80 */
-.j9j{
-  position: fixed;
-  margin-top: -5vh;
-  margin-left: -5vh;
-  
-}
-/* RM 79 */
-.j10j{
-  position: fixed;
-  margin-top: -5vh;
-  margin-left: 40vh;
-  
-}
-/* Lm 78 */
-.j11j{
-  position: fixed;
-  margin-top: -5vh;
-  margin-left: -50vh;
-  
-}
 
 /* Players */
 
