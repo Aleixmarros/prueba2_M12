@@ -31,7 +31,10 @@
       background-position:0px -3000px;
     }
   }
-
+  .inactive {
+    background-color: black;
+    opacity: 0.5;
+  }
   .valors{
     display: flex;
     justify-content: space-between;

@@ -27,7 +27,8 @@
             "attack": 97,
             "defense": 57,
             "price": 500000000,
-            "imagen": "./components/imgJugadores/17226.png"
+            "imagen": "./components/imgJugadores/17226.png",
+            "isActive": true
         },
         {
             "id": 4251,
@@ -58,7 +59,9 @@
         "rating": 71,
         "attack": 21,
         "defense": 71,
-        "price": 1000000
+        "price": 1000000,
+        "isActive": true
+
         },
         {
             "id": 7592,
@@ -89,7 +92,9 @@
         "rating": 71,
         "attack": 31,
         "defense": 71,
-        "price": 1000000
+        "price": 1000000,
+        "isActive": true
+
         },
         {
             "id": 17134,
@@ -133,7 +138,9 @@
             "rating": 88,
             "attack": 48,
             "defense": 88,
-            "price": 150000000
+            "price": 150000000,
+            "isActive": true
+
         },
         {
             "id": 7555,
@@ -173,7 +180,9 @@
             "rating": 79,
             "attack": 79,
             "defense": 39,
-            "price": 70000000
+            "price": 70000000,
+            "isActive": true
+
         },
         {
             "id": 16242,
@@ -225,7 +234,9 @@
         "rating": 86,
         "attack": 86,
         "defense": 36,
-        "price": 130000000
+        "price": 130000000,
+        "isActive": true
+
         },
         {
             "id": 17230,
@@ -263,7 +274,9 @@
         "rating": 94,
         "attack": 44,
         "defense": 94,
-        "price": 300000000
+        "price": 300000000,
+        "isActive": true
+
         },
         
         {
@@ -293,7 +306,9 @@
             "rating": 96,
             "attack": 36,
             "defense": 97,
-            "price": 400000000
+            "price": 400000000,
+            "isActive": true
+
 
         },
         {
@@ -329,7 +344,9 @@
         "rating": 80,
         "attack": 78,
         "defense": 78,
-        "price": 85000000
+        "price": 85000000,
+        "isActive": true
+
         },
         {
             "id": 10117,
@@ -359,7 +376,9 @@
             "rating": 71,
             "attack": 71,
             "defense": 66,
-            "price": 1000000
+            "price": 1000000,
+            "isActive": true
+
         },
         {
             "id": 3978,
@@ -390,7 +409,9 @@
         "rating": 78,
         "attack": 78,
         "defense": 73,
-        "price": 60000000
+        "price": 60000000,
+        "isActive": true
+
         }
     
 

@@ -127,9 +127,6 @@ const PlayerList = (player) => {
 
   const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(null);
   const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(null);
-
-  const [selectedPlayer1, setSelectedPlayer1] = useState(null);
-  const [selectedPlayer2, setSelectedPlayer2] = useState(null);
   
   const [result, setResult] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
@@ -137,6 +134,10 @@ const PlayerList = (player) => {
 
 
   const handleSelectPlayer = (player, valueType) => {
+    if (!player.isActive) {
+      return;
+    }
+
     if (valueType === "attack") {
       setSelectedPlayerAttack(player);
       setSelectedValue(`Ataque: ${player.attack}`);
@@ -144,26 +145,44 @@ const PlayerList = (player) => {
       setSelectedPlayerDefense(player);
       setSelectedValue(`Defensa: ${player.defense}`);
     }
-  
+
     if (selectedPlayerAttack && selectedPlayerDefense) {
       comparisonResult();
+    } else {
+      setResult("");
+      setSelectedValue("");
     }
   };
 
   const comparisonResult = () => {
     if (selectedPlayerAttack && selectedPlayerDefense) {
       let result = "";
+      let updatedPlayerAttack = { ...selectedPlayerAttack };
+      let updatedPlayerDefense = { ...selectedPlayerDefense };
+
       if (selectedPlayerAttack.attack > selectedPlayerDefense.defense) {
         result = `${selectedPlayerAttack.name} ha ganado`;
+        updatedPlayerAttack.isActive = false;
       } else if (selectedPlayerAttack.attack < selectedPlayerDefense.defense) {
         result = `${selectedPlayerDefense.name} ha ganado`;
+        updatedPlayerDefense.isActive = false;
       } else {
         result = "El ataque y la defensa son iguales";
       }
+
       setResult(result);
+      setSelectedPlayerAttack(updatedPlayerAttack);
+      setSelectedPlayerDefense(updatedPlayerDefense);
     }
   };
-  
+
+  console.log(selectedPlayerAttack);
+  console.log(selectedPlayerDefense);
+
+  console.log(comparisonResult);
+  console.log(setSelectedPlayerAttack);
+  console.log(setSelectedPlayerDefense);
+
 
   const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
   const [teamRatings, setTeamRatings] = useState({ equipo1: 0, equipo2: 0 });
@@ -216,8 +235,8 @@ return (
         </div>
       </div>
       <div className="valors">
-        <h4>El Valor del 1r jugador es: {selectedValue}<br></br>
-        El Valor del 2º jugador es: {selectedValue}</h4>
+        <h4>El Valor de es: {selectedValue}<br></br>
+        El Valor de es: {selectedValue}</h4>
         <h3>{result}</h3>
           {/* <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button> */}
 
