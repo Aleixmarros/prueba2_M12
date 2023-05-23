@@ -75,6 +75,13 @@ const PlayerList = () => {
   
   const [result, setResult] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
+  const [selectedPlayers, setSelectedPlayers] = useState([]);
+  const [comparisonCount, setComparisonCount] = useState(0);
+
+  const [jugadores, setJugadores] = useState(Jugadores);
+
+
+
 
 
 
@@ -86,58 +93,82 @@ const PlayerList = () => {
     if (valueType === "attack") {
       setSelectedPlayerAttack(player);
       setSelectedValue(`Ataque: ${player.attack}`);
+      player.isActive = false;
+
     } else if (valueType === "defense") {
       setSelectedPlayerDefense(player);
       setSelectedValue(`Defensa: ${player.defense}`);
       player.isActive = false;
     }
-    if (selectedPlayerAttack && selectedPlayerDefense) {
+    setSelectedPlayers((prevSelectedPlayers) => [...prevSelectedPlayers, player]);
+
+    if (selectedPlayers.length === 2) {
       comparisonResult();
-      player.isActive = false;
+      setComparisonCount(comparisonCount + 1);
+
     } else {
       setResult("");
       setSelectedValue("");
     }
   };
   
-  
+  const MAX_COMPARISONS = 2; // Define la cantidad máxima de comparaciones
+
   const comparisonResult = () => {
-    // Resto del código de la función
-
     let comparisonDetails = "";
-
-    if (selectedPlayerAttack && selectedPlayerDefense) {
+  
+    if (selectedPlayers.length === MAX_COMPARISONS) {
       let result = "";
-      let updatedPlayerAttack = { ...selectedPlayerAttack };
-      let updatedPlayerDefense = { ...selectedPlayerDefense };
-
-      if (selectedPlayerAttack.attack > selectedPlayerDefense.defense) {
-        result = `${selectedPlayerAttack.name} ha ganado`;
+      let updatedPlayerAttack = { ...selectedPlayers[0] };
+      let updatedPlayerDefense = { ...selectedPlayers[1] };
+  
+      if (updatedPlayerAttack.attack > updatedPlayerDefense.defense) {
+        result = `${updatedPlayerAttack.name} ha ganado`;
         updatedPlayerAttack.isActive = false;
-        comparisonDetails = `${selectedPlayerAttack.name} (${selectedPlayerAttack.attack}) > ${selectedPlayerDefense.name} (${selectedPlayerDefense.defense})`;
-      } else if (selectedPlayerAttack.attack < selectedPlayerDefense.defense) {
-        result = `${selectedPlayerDefense.name} ha ganado`;
+        comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) > ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
+      } else if (updatedPlayerAttack.attack < updatedPlayerDefense.defense) {
+        result = `${updatedPlayerDefense.name} ha ganado`;
         updatedPlayerDefense.isActive = false;
-        comparisonDetails = `${selectedPlayerAttack.name} (${selectedPlayerAttack.attack}) < ${selectedPlayerDefense.name} (${selectedPlayerDefense.defense})`;
+        comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) < ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
       } else {
         result = "El ataque y la defensa son iguales";
-        comparisonDetails = `${selectedPlayerAttack.name} (${selectedPlayerAttack.attack}) = ${selectedPlayerDefense.name} (${selectedPlayerDefense.defense})`;
+        comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) = ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
       }
 
+      if (updatedPlayerAttack.attack > updatedPlayerDefense.defense) {
+        result = `${updatedPlayerAttack.name} ha ganado`;
+        updatedPlayerAttack.isActive = false;
+        comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) > ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
+        setScore(score + 1); // Incrementa el marcador en 1
+      }
+      
+  
       setResult(result);
-      setSelectedPlayerAttack(updatedPlayerAttack);
-      setSelectedPlayerDefense(updatedPlayerDefense);
+      setJugadores((prevJugadores) => {
+        const updatedJugadores = prevJugadores.map((jugador) => {
+          if (jugador.id === updatedPlayerAttack.id || jugador.id === updatedPlayerDefense.id) {
+            return jugador.isActive ? { ...jugador, isActive: false } : jugador;
+          }
+          return jugador;
+        });
+        return updatedJugadores;
+      });
+      
+      setSelectedPlayers([]);
+      setResultDetails(comparisonDetails);
     }
-
-    // Agregar el siguiente código para mostrar los detalles de la comparación
-    setResultDetails(comparisonDetails);
   };
+  
+  
 
   const [resultDetails, setResultDetails] = useState("");
 
 
   const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
   const [teamRatings, setTeamRatings] = useState({ equipo1: 0, equipo2: 0 });
+
+  const [score, setScore] = useState(0);
+
 
   useEffect(() => {
     let totalEquipo1 = 0;
@@ -173,30 +204,27 @@ return (
       <div className="team-container">
         <div className="team1">
           <div className="team1-content">
-            <h1>K1LLERS TEAM <img src={k1} style={{ width: "10vh" }} alt="k1" /></h1>
+            <h1>K1LLERS TEAM <img src={k1} style={{ width: "6vh" }} alt="k1" /></h1>
             <h4>Media de ratings K1LLERS TEAM: {teamRatings.equipo1.toFixed(2)}</h4>
             <h4>Precio total equipo K1LLERS TEAM: {typeof teamPrices.equipo1 === 'number' ? teamPrices.equipo1.toLocaleString() : teamPrices.equipo1}€</h4>
           </div>
         </div>
         <div className="team2">
           <div className="team2-content">
-            <h1>PEPE FC <img src={pepe} style={{ width: "10vh" }} alt="pepe" /></h1>
+            <h1>PEPE FC <img src={pepe} style={{ width: "6vh" }} alt="pepe" /></h1>
             <h4>Media de ratings PEPE FC: {teamRatings.equipo2.toFixed(2)}</h4>
             <h4>Precio total equipo PEPE FC: {typeof teamPrices.equipo2 === 'number' ? teamPrices.equipo2.toLocaleString() : teamPrices.equipo2}€</h4>
           </div>
         </div>
       </div>
       <div className="valors">
-        <h4>El Valor de {selectedValue}<br></br>
-        El Valor de {selectedValue}</h4>
-        {resultDetails && <p style={{ position: "absolute", marginTop: '15vh' }}>Detalles: {resultDetails}</p>}
-        <h3>{result}</h3>
-          {/* <button style={{margin: "1vh"}} className="btn btn-primary" onClick={compareAttackDefense}>Comparar</button> */}
-
-
-        {/* <button onClick={comparePlayers}>Comparar jugadores</button> */}
-
       </div>
+      {resultDetails &&  <h3 className="rr" style={{ position: 'absolute', marginTop: '-10vh', marginLeft:'60vh'}}>Enfrentamiento: {resultDetails}</h3>}
+        <h1 style={{position: 'absolute',marginLeft:'75vh', marginTop:'-19vh'}} >{result}</h1>
+        {/* <h3>{selectedValue}</h3> */}
+        <h1 style={{position: 'absolute', marginLeft:'84vh', marginTop:'-25vh'}} >Marcador: {score} - 0</h1>
+      <button style={{margin: "1vh",position: 'absolute', marginLeft:'-7vh', marginTop:'5vh'}} className="btn btn-primary" onClick={comparisonResult}>Comparar</button>
+
 
       <section className="ContainerPlay">
         <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px' , marginLeft: '35px', padding: 0}}>

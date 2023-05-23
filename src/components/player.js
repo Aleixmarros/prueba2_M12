@@ -127,7 +127,7 @@ function Play() {
           {result && <h3 style={{ position: "absolute" }}>{result}</h3>}
         {selectedValue && <h3 style={{ position: "absolute", marginTop: '10vh' }}>{selectedValue}</h3>}
         {resultDetails && <p style={{ position: "absolute", marginTop: '15vh' }}>Detalles: {resultDetails}</p>}
-
+      
           <section className="ContainerPlay">
             <div
               className="futbolistas"

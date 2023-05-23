@@ -37,21 +37,37 @@
     pointer-events: none;
 
   }
-  .valors{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    position: absolute;
+  .rr{
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1vh;
+    margin-left: 60vh;
+
+  }
+  .r{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1vh;
+    margin-top: 20vh;
+  }
+  .valors{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    text-align: center;
+    position: absolute;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* border-radius: 1vh; */
     margin: 1vh;
-    margin-left: 77vh;
-    margin-top: -15vh;
+    margin-left: 108vh;
+    margin-top: -27vh;
     padding: 1vh;
-    padding-bottom: -10vh;
+    /* padding-bottom: -10vh; */
   }
 
   .valors h3{
+    margin-top: 10vh;
+    margin-left: -29vh;
+  }
+
+  .valors h1{
     margin-top: 10vh;
     margin-left: -29vh;
   }
