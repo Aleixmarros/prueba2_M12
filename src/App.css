@@ -138,6 +138,22 @@ body {
 }
 
 
+.videoplayer{
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+  border-radius: 1%;
+
+}
+
+.comoPlay{
+  margin-top: 3vh;
+background: -webkit-linear-gradient(yellow,red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;   
+}
+
+
 
 
 /* Players */

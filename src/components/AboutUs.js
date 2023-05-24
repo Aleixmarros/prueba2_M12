@@ -13,7 +13,7 @@ export default class AboutUs extends Component {
   render() {
     return (
       <div className="form2">
-                <h2 className="titulo2" style={{fontSize:"70px", marginBottom: "5vh"}}>Abous Us</h2>
+                <h2 className="titulo2" style={{fontSize:"70px", marginBottom: "5vh"}}>About Us</h2>
         <p style={{ fontSize: '25px' }}>Somos unos estudiantes del Grado Superior de Desarrollo de Aplicaciones Web y estamos presentando nuestra idea en formato web para el trabajo final de curso.</p><br></br>
         <p style={{ fontSize: '25px' }}>Desde el inicio del proyecto, hemos trabajado para mejorar lo máximo posible la visión e idea de nuestro proyecto.</p><br></br>
         <p style={{ fontSize: '25px' }}>Nuestro equipo está compuesto por expertos en el desarrollo de aplicaciones web.<br></br> Trabajamos con pasión y compromiso para ofrecer un proyecto de calidad.</p>

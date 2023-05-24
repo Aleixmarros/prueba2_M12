@@ -207,21 +207,9 @@ function T() {
                     <div className="futbolistas" style={{ position: 'fixed', marginBottom: '-90px', height: '50px', }}>
                         <div className='JimgM'>
                         {Jugadores.sort((a, b) => b.rating - a.rating).map((player, index) => (
-                                <div
-                                    className='players-container'
-                                    key={player.id}
-                                    style={{ margin: '-41px' }}
-                                >
-                                    <div
-                                        className='JimgM'
-                                        style={{ position: 'relative', textAlign: 'center' }}
-                                    >
-                                        <img
-                                            src={fcard}
-                                            alt="card"
-                                            className='Jimg'
-                                            style={{ height: 250 }}
-                                        />
+                                <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
+                                    <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
+                                        <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }}/>
                                         <div className='datosCard' style={{ textAlign: 'center', }}>
                                             <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
                                             <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
@@ -231,11 +219,7 @@ function T() {
                                             <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
                                             <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
                                         </div>
-                                        <img
-                                            src={images[player.id]}
-                                            style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }}
-                                            alt="Imagen del jugador"
-                                        />
+                                        <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
                                     </div>
                                 </div>
                             ))}
