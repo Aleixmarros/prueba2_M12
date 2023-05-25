@@ -152,6 +152,9 @@ function T() {
                                 </div>
 
                             </div>
+                            <div className="bgb" style={{marginTop:'140vh'}}>
+                            <MyTeam />
+                            </div>
                         </section>
                     </article>
                 </div>
@@ -201,13 +204,13 @@ function T() {
 
 
         return (
-            <article style={{ position: "absolute", marginBottom: "-230vh", }}>
+            <article style={{ position: "absolute", marginBottom: "-140vh" , backgroundColor: 'black' }}>
 
                 <div style={{ position: "sticky" }} >
 
                     <section style={{ position: "sticky", marginBottom: "-205vh" }} className="containerMyTeam" >
 
-                        <div className="futbolistas" style={{ position: 'fixed', marginBottom: '300px', height: '50px', marginLeft: '10vh' }}>
+                        <div className="futbolistas" style={{ position: 'fixed', marginBottom: '300px', height: '5px', marginLeft: '10vh' }}>
                             <div className='JimgM'>
                                 {Jugadores.sort((a, b) => b.rating - a.rating).map((player, index) => (
                                     <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
@@ -237,7 +240,7 @@ function T() {
     return (
         <>
             {Team()}
-            {MyTeam()}
+            {/* {MyTeam()} */}
         </>
     );
 }

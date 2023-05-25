@@ -10,7 +10,9 @@
     align-items: center;
     margin-top: 10%;
 }
-
+.bgb{
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .wrapper {
     /* background: url(../img/bg.png); */
     background-attachment: fixed;

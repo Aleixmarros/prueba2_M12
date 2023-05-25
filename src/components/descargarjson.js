@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-
-
 function Teams() {
   const [player, setPlayer] = useState({});
   const id = 39;
-  // const [playerId, setPlayerId] = useState();
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -18,10 +14,8 @@ function Teams() {
           }
         }
       );
-
       const data = await response.json();
       setPlayer(data.player);
-
       // Guardar la respuesta JSON en un archivo
       const jsonString = JSON.stringify(data);
       const blob = new Blob([jsonString], { type: 'application/json' });
@@ -34,27 +28,8 @@ function Teams() {
     };
     fetchData();
   }, []);
-
-  // const handleIdSubmit = (e) => {
-  //   e.preventDefault();
-  //   setPlayerId(e.target.value);
-  // };
-
-  // const handleChange = (e) => {
-  //   setPlayerId(e.target.value);
-  // };
-
   return (
     <div>
-      {/* <h2>{player.name} </h2>
-      <h4>Valoración: {player.rating}</h4>
-      <p>Posición: {player.position}</p>
-      <p>Categoria: {player.color}</p>
-      <p>Pie preferido: {player.foot}</p>
-      <p>Edad: {player.age}</p>
-      <form onSubmit={handleIdSubmit}>
-        <input type="text" className='inForm' style={{ color: "black" }} name='playerId' onChange={handleChange} />
-      </form> */}
     </div>
   );
 }
