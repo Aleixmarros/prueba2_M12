@@ -31,8 +31,8 @@ export default class Home extends Component {
             <h1>¡Demuestra lo que sabes de fútbol!</h1>
             <h4>Crea el mejor equipo para llegar a lo mas alto</h4>
             <img src={myTeam} alt='imagen plantilla MyTeam' style={{ maxWidth: "68vh", display: 'block', margin: '0 auto', marginTop: '5vh', borderRadius: '15px' }} />
-            <button className="btn btn-primary" style={{ margin: '1vh auto', borderRadius: '5px', display: 'block' }}>Seleccionar Torneo</button>
-            <button className="btn btn-secondary" style={{ margin: '1vh auto', borderRadius: '5px', display: 'block' }}>Crear Torneo</button>
+            {/* <button className="btn btn-primary" style={{ margin: '1vh auto', borderRadius: '5px', display: 'block' }}>Seleccionar Torneo</button> */}
+            {/* <button className="btn btn-secondary" style={{ margin: '1vh auto', borderRadius: '5px', display: 'block' }}>Crear Torneo</button> */}
           </div>
           <div>
             <h1>Gestiona, ficha y gana</h1>

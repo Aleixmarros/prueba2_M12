@@ -52,11 +52,14 @@ function T() {
             return (
                 <div key={player.id}>
                     <div className='players-container' key={player.id} style={{ margin: '-41px', padding: 0 }}>
-                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center', marginLeft:'-3vh' }}>
+                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center', marginLeft: '-3vh' }}>
                             <img src={fcard} alt="card" className='Jimg' style={{ height: 325 }} />
                             <div className='datosCard' style={{ textAlign: 'center' }}>
                                 <p style={{ position: 'absolute', marginLeft: 40, marginTop: 20, top: 0, left: 0, fontSize: 45, color: 'black' }}>{player.position}</p>
                                 <p style={{ position: 'absolute', marginLeft: 140, marginTop: 20, top: 0, left: 0, fontSize: 45, color: 'black' }}>{player.rating}</p>
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px' }}>
+                                    <h4 style={{ color: 'black', textAlign: 'center', position: 'flex', marginLeft: -220, marginTop: 465, top: 0, left: 0, fontSize: 15 }}>{player.name}</h4>
+                                </div>
                                 <p style={{ position: 'absolute', marginLeft: 50, marginTop: 155, top: 0, left: 0, fontSize: 50, color: 'red' }}>{player.attack}</p>
                                 <p style={{ position: 'absolute', marginLeft: 125, marginTop: 155, top: 0, left: 0, fontSize: 50, color: 'green' }}>{player.defense}</p>
                             </div>
@@ -96,7 +99,7 @@ function T() {
 
 
             return (
-                <div className="wrapper" style={{position:"absolute", marginTop:"60%"}}>
+                <div className="wrapper" style={{ position: "absolute", marginTop: "60%" }}>
                     <article>
 
                         <section className="ContainerPlay2">
@@ -198,37 +201,37 @@ function T() {
 
 
         return (
-            <article style={{ position:"sticky",  marginBottom: "-205vh", }}>
+            <article style={{ position: "absolute", marginBottom: "-230vh", }}>
 
-            <div style={{position:"sticky"}} >
+                <div style={{ position: "sticky" }} >
 
-                <section style={{position:"sticky" , marginBottom:"-205vh"}} className="containerMyTeam" >
+                    <section style={{ position: "sticky", marginBottom: "-205vh" }} className="containerMyTeam" >
 
-                    <div className="futbolistas" style={{ position: 'fixed', marginBottom: '300px', height: '50px', marginLeft:'10vh' }}>
-                        <div className='JimgM'>
-                        {Jugadores.sort((a, b) => b.rating - a.rating).map((player, index) => (
-                                <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
-                                    <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
-                                        <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }}/>
-                                        <div className='datosCard' style={{ textAlign: 'center', }}>
-                                            <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
-                                            <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
-                                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px', }}>
-                                                {/* Aquí puedes agregar cualquier otro contenido adicional */}
+                        <div className="futbolistas" style={{ position: 'fixed', marginBottom: '300px', height: '50px', marginLeft: '10vh' }}>
+                            <div className='JimgM'>
+                                {Jugadores.sort((a, b) => b.rating - a.rating).map((player, index) => (
+                                    <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
+                                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
+                                            <img src={fcard} alt="card" className='Jimg' style={{ height: 250 }} />
+                                            <div className='datosCard' style={{ textAlign: 'center', }}>
+                                                <p style={{ position: 'absolute', marginLeft: 27, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.position}</p>
+                                                <p style={{ position: 'absolute', marginLeft: 110, marginTop: 10, top: 0, left: 0, fontSize: 30, color: 'black' }}>{player.rating}</p>
+                                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '-320px', }}>
+                                                    {/* Aquí puedes agregar cualquier otro contenido adicional */}
+                                                </div>
+                                                <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
+                                                <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
                                             </div>
-                                            <p style={{ position: 'absolute', marginLeft: 35, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
-                                            <p style={{ position: 'absolute', marginLeft: 90, marginTop: 110, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
+                                            <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
                                         </div>
-                                        <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 35, marginTop: 10, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                    </div>
 
-                </section>
-            </div>
-</article>
+                    </section>
+                </div>
+            </article>
         );
     };
     return (
