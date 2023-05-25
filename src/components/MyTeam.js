@@ -52,13 +52,13 @@ function T() {
             return (
                 <div key={player.id}>
                     <div className='players-container' key={player.id} style={{ margin: '-41px', padding: 0 }}>
-                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center' }}>
+                        <div className='JimgM' style={{ position: 'relative', textAlign: 'center', marginLeft:'-3vh' }}>
                             <img src={fcard} alt="card" className='Jimg' style={{ height: 325 }} />
                             <div className='datosCard' style={{ textAlign: 'center' }}>
-                                <p style={{ position: 'absolute', marginLeft: 40, marginTop: 20, top: 0, left: 0, fontSize: 40, color: 'black' }}>{player.position}</p>
-                                <p style={{ position: 'absolute', marginLeft: 140, marginTop: 20, top: 0, left: 0, fontSize: 40, color: 'black' }}>{player.rating}</p>
-                                <p style={{ position: 'absolute', marginLeft: 50, marginTop: 160, top: 0, left: 0, fontSize: 40, color: 'red' }}>{player.attack}</p>
-                                <p style={{ position: 'absolute', marginLeft: 125, marginTop: 160, top: 0, left: 0, fontSize: 40, color: 'green' }}>{player.defense}</p>
+                                <p style={{ position: 'absolute', marginLeft: 40, marginTop: 20, top: 0, left: 0, fontSize: 45, color: 'black' }}>{player.position}</p>
+                                <p style={{ position: 'absolute', marginLeft: 140, marginTop: 20, top: 0, left: 0, fontSize: 45, color: 'black' }}>{player.rating}</p>
+                                <p style={{ position: 'absolute', marginLeft: 50, marginTop: 155, top: 0, left: 0, fontSize: 50, color: 'red' }}>{player.attack}</p>
+                                <p style={{ position: 'absolute', marginLeft: 125, marginTop: 155, top: 0, left: 0, fontSize: 50, color: 'green' }}>{player.defense}</p>
                             </div>
                             <img src={images[player.id]} style={{ position: 'absolute', marginLeft: 65, marginTop: 40, top: 0, left: 0, height: 100 }} alt="Imagen del jugador" />
                         </div>
@@ -198,13 +198,13 @@ function T() {
 
 
         return (
-            <article style={{ position:"absolute", marginTop: "2020px", marginBottom: "400px", overflowY: 'scroll'}}>
+            <article style={{ position:"sticky",  marginBottom: "-205vh", }}>
 
-            <div style={{position:"absolute"}} >
+            <div style={{position:"sticky"}} >
 
-                <section className="containerMyTeam" >
+                <section style={{position:"sticky" , marginBottom:"-205vh"}} className="containerMyTeam" >
 
-                    <div className="futbolistas" style={{ position: 'absolute', marginBottom: '-90px', height: '50px', }}>
+                    <div className="futbolistas" style={{ position: 'fixed', marginBottom: '300px', height: '50px', marginLeft:'10vh' }}>
                         <div className='JimgM'>
                         {Jugadores.sort((a, b) => b.rating - a.rating).map((player, index) => (
                                 <div className='players-container' key={player.id} style={{ margin: '-41px' }}>
