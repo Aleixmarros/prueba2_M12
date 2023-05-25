@@ -25,7 +25,7 @@
 }
 
 .ContainerPlay2{
-  height: 770px;
+  height: 760px;
   width: 100%;
   background-image: url(../img/campoMyTeam.png);
   background-size: cover;
@@ -51,7 +51,6 @@
   align-items: center;
   flex-wrap: wrap;
   position: fixed;
-
 }
 
 .posicion {
@@ -93,6 +92,7 @@
 .JimgM{
   display: flex;
   flex-direction: row;
+  margin-right: 3.5vh;
   }
 
 .plantilla-item {
