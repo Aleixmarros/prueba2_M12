@@ -72,19 +72,16 @@ function Play() {
   const PlayerList = () => {
     const [selectedPlayerAttack, setSelectedPlayerAttack] = useState(null);
     const [selectedPlayerDefense, setSelectedPlayerDefense] = useState(null);
-
     const [result, setResult] = useState("");
     const [selectedValue, setSelectedValue] = useState("");
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [comparisonCount, setComparisonCount] = useState(0);
-
     const [jugadores, setJugadores] = useState(Jugadores);
-
-
-
-
-
-
+    const [resultDetails, setResultDetails] = useState("");
+    const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
+    const [teamRatings, setTeamRatings] = useState({ equipo1: 0, equipo2: 0 });
+    const [score, setScore] = useState(0);
+    const [score2, setScore2] = useState(0);
     const handleSelectPlayer = (player, valueType) => {
       if (!player.isActive) {
         return;
@@ -111,9 +108,7 @@ function Play() {
         setSelectedValue("");
       }
     };
-
     const MAX_COMPARISONS = 2; // Define la cantidad máxima de comparaciones
-
     const comparisonResult = () => {
       let comparisonDetails = "";
 
@@ -130,6 +125,8 @@ function Play() {
           result = `${updatedPlayerDefense.name} ha ganado`;
           updatedPlayerDefense.isActive = false;
           comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) < ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
+          setScore2(score2+ 1); // Incrementa el marcador en 1
+
         } else {
           result = "El ataque y la defensa son iguales";
           comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) = ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
@@ -141,8 +138,6 @@ function Play() {
           comparisonDetails = `${updatedPlayerAttack.name} (${updatedPlayerAttack.attack}) > ${updatedPlayerDefense.name} (${updatedPlayerDefense.defense})`;
           setScore(score + 1); // Incrementa el marcador en 1
         }
-
-
         setResult(result);
         setJugadores((prevJugadores) => {
           const updatedJugadores = prevJugadores.map((jugador) => {
@@ -158,17 +153,6 @@ function Play() {
         setResultDetails(comparisonDetails);
       }
     };
-
-
-
-    const [resultDetails, setResultDetails] = useState("");
-
-
-    const [teamPrices, setTeamPrices] = useState({ equipo1: 0, equipo2: 0 });
-    const [teamRatings, setTeamRatings] = useState({ equipo1: 0, equipo2: 0 });
-
-    const [score, setScore] = useState(0);
-
 
     useEffect(() => {
       let totalEquipo1 = 0;
@@ -189,10 +173,8 @@ function Play() {
         sumRatingEquipo2 += player.rating;
         countEquipo2++;
       });
-
       const avgRatingEquipo1 = countEquipo1 > 0 ? sumRatingEquipo1 / countEquipo1 : 0;
       const avgRatingEquipo2 = countEquipo2 > 0 ? sumRatingEquipo2 / countEquipo2 : 0;
-
       setTeamPrices({ equipo1: totalEquipo1, equipo2: totalEquipo2 });
       setTeamRatings({ equipo1: avgRatingEquipo1, equipo2: avgRatingEquipo2 });
     }, []);
@@ -220,7 +202,7 @@ function Play() {
           <div className="valors">
           </div>
           <div style={{ position: 'absolute', top: '90%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <h1>Marcador: {score} - 0</h1>
+            <h1>Marcador: {score} - {score2}</h1>
             {resultDetails && <h4 className="rr" style={{ marginTop: '5vh', marginLeft: '5vh' }} >Enfrentamiento: {resultDetails}</h4>}
             <h1 className='comoPlay'>{result}</h1>
             <button className="btn btn-primary" style={{ marginTop: '5vh' }} onClick={comparisonResult}>Comparar</button>

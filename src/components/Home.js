@@ -46,6 +46,14 @@ export default class Home extends Component {
             <img src={classificacion} alt='imagen Classificacion' style={{ maxWidth: "68vh", display: 'block', margin: '0 auto', maxHeight: '55vh', borderRadius: '15px' }} />
 
           </div>
+          <div>
+            <h1  style={{marginTop:'5vh', fontSize:'8vh'}}>Aprende a Jugar</h1>
+            <h4  style={{marginTop:'1vh', fontSize:'3vh'}}>Mira el mini tutorial, para aprender a jugar!</h4>
+            <button className="btn btn-primary" style={{marginTop:'5vh', fontSize:'5vh'}} onClick={() => { const videoSection = document.getElementById('videoC');
+             videoSection.scrollIntoView({ behavior: 'smooth' });}}>Como se Juega</button>
+
+
+          </div>
 
         </Slider>
       );
@@ -59,7 +67,7 @@ export default class Home extends Component {
           <SimpleSlider />
           
         </div>
-        <h1 className='comoPlay'>COMO SE JUEGA:</h1>
+        <h1 id='videoC' className='comoPlay'>COMO SE JUEGA:</h1>
         <video className='videoplayer' controls width="50%">
             <source src={video} type="video/mp4" />
             Tu navegador no admite la reproducción de videos.
