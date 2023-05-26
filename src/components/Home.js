@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import myTeam from '../img/MyTeam.png';
 import players from '../img/Players.png';
 import classificacion from '../img/classificacion.png';
-import video from './video/Valorant2022.03.18-ACEJett.mp4';
+import video from './video/FutMan.mp4';
 
 
 export default class Home extends Component {
