@@ -76,7 +76,7 @@ const Profile = () => {
             <label htmlFor="avatar-input">
               <Avatar src={avatar} size="60" round={true} style={{ marginRight: '10px' }} />
             </label>
-            <label>Ejemplo Username</label>
+            <label>FutManPro</label>
           </div>
           <div className="mb-1">
             <label style={{ marginRight: "10px" }}>Email:</label>
